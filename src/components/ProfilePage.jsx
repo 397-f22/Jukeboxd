@@ -21,11 +21,11 @@ const ProfilePage = () => {
   
     return( 
         <div className="container">
-
-            <RatingCard data={dummydata}/>
-
-            <Searchbox/>
-
+            
+            <div>
+                <RatingCard data={dummydata}/>
+            </div>
+            
         </div>  
     );
 }

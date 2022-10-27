@@ -19,9 +19,20 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.searchbox-container {
+  margin-left: auto;
 }
 
 .App-header .title {
@@ -44,3 +55,5 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+
