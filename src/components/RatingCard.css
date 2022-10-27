@@ -1,6 +1,10 @@
 /* https://stackoverflow.com/a/47698201/4564359 */
-.ratingCard .card-img-top {
-    width: 100%;
-    height: 15vw;
+.container{
+  display: flex;
+}
+
+.card-img-top {
+    width: 65%;
     object-fit: cover;
-  }
+}
+
