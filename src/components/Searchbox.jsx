@@ -1,11 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import SearchPopup from './SearchPopup.jsx'
+import Modal from './Modal.jsx'
 
 
 const Searchbox = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSong, setSelectedSong] = useState(undefined);
-    const [data, setData] = useState(undefined);
+    const [data, setData] = useState([]);
+    const [open, setOpen] = useState(false);
+
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
+
 
     const updateSearchTerm = (event) => {
         setSearchTerm(event.target.value);
@@ -14,9 +21,9 @@ const Searchbox = () => {
     const search = () => {
         fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setData(data);
+            .then(d => {
+                //console.log(d);
+                setData(d);
             });
     }
 
@@ -24,14 +31,9 @@ const Searchbox = () => {
         <div className="container">
             <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm}></input>
             <button className='button-class' onClick={search}>Search</button>
-            {data && data.map(song => {
-                <div className={song === selectedSong ? "selected-song" : "unselected-song"} onClick={() => setSelectedSong(song)}>
-                    <div>{song.name}</div>
-                    <div>{song.artist.name}</div>
-                    <div>{song.album.name}</div>
-                    <div>{song.image.image_url}</div>
-                </div>
-            })}
+            <Modal open={open} close={closeModal}>
+                <SearchPopup data={data}/>
+            </Modal>
         </div>
     );
 }
