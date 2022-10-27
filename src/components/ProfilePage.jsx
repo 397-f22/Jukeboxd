@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import RatingCard from './RatingCard.jsx';
 import Searchbox from './Searchbox.jsx';
+import CardGrid from './CardGrid.jsx'
 
 const ProfilePage = () => {
     const dummydata = {
@@ -23,7 +24,8 @@ const ProfilePage = () => {
         <div className="container">
             
             <div>
-                <RatingCard data={dummydata}/>
+                <CardGrid listOfRatingData={[dummydata, dummydata, dummydata]}/>
+                {/* <RatingCard data={dummydata}/> */}
             </div>
             
         </div>  
