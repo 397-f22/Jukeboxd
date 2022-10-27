@@ -2,11 +2,9 @@ import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './Header.jsx'
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import Homepage from './components/Homepage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
-
-
 
 const ProfileForUrl = ({data}) => {
   const { id } = useParams();

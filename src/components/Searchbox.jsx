@@ -13,7 +13,6 @@ const Searchbox = () => {
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
 
-
     const updateSearchTerm = (event) => {
         setSearchTerm(event.target.value);
     }
@@ -30,9 +29,12 @@ const Searchbox = () => {
     return (
         <div className="container">
             <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm}></input>
-            <button className='button-class' onClick={search}>Search</button>
-            <Modal open={open} close={closeModal}>
-                <SearchPopup data={data}/>
+            <button className='button-class' onClick={() => {
+                search();
+                openModal();
+            }}>Search</button>
+            <Modal open={open} close={closeModal} title="Select Song">
+                <SearchPopup data={data} selectedSong={selectedSong} setSelectedSong={setSelectedSong}/>
             </Modal>
         </div>
     );

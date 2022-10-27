@@ -56,4 +56,38 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
+.search-song {
+  color: black;
+  font-size: 15px;
+}
 
+.search-song .selected {
+  border-style: solid;
+  border-color: red;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.search-song .unselected {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.search-song .album-cover {
+  width: 25%;
+  height: 25%;
+  object-fit: cover;
+}
+
+.search-song .info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}

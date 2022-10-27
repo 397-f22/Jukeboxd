@@ -2,7 +2,7 @@ import './Modal.css';
 
 // https://codebuckets.com/2021/08/08/bootstrap-modal-dialog-in-react-without-jquery/
 
-const Modal = ({ children, open, close }) => (
+const Modal = ({ children, open, close, title }) => (
   <div
     className={`modal ${open ? 'modal-show' : ''}`}
     tabIndex="-1"
@@ -12,6 +12,7 @@ const Modal = ({ children, open, close }) => (
     <div className="modal-dialog" role="document">
       <div className="modal-content">
         <div className="modal-header">
+          <div style={{color: "black"}}>{title}</div>
           <button type="button" className="btn-close" aria-label="Close"
             onClick={close}
           />
