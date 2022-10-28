@@ -1,4 +1,5 @@
 import RatingCard from './RatingCard.jsx'
+import './CardGrid.css';
 
 const CardGrid = ({listOfRatingData}) => (
     <div className="card-grid">

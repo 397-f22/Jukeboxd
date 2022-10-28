@@ -1,8 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import SearchPopup from './SearchPopup.jsx'
-import Modal from './Modal.jsx'
-
+import SearchPopup from './SearchPopup.jsx';
+import Modal from './Modal.jsx';
+import { OutlinedInput, Fab } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 const Searchbox = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -18,21 +19,28 @@ const Searchbox = () => {
     }
 
     const search = () => {
-        fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
-            .then(response => response.json())
-            .then(d => {
-                //console.log(d);
-                setData(d);
+        if(searchTerm){
+            fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
+                .then(response => response.json())
+                .then(d => {
+                    //console.log(d);
+                    setData(d);
             });
+            openModal();
+        }
     }
 
     return (
         <div className="container">
-            <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm}></input>
-            <button className='button-class' onClick={() => {
+            {/* <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm}></input> */}
+            <OutlinedInput placeholder="Search..." value={searchTerm} onChange={updateSearchTerm} color="success" id="search-box"/>
+            <Fab color="success" aria-label="search" onClick={search} style={{ marginLeft: "10px" }}>
+                <SearchIcon />
+            </Fab>
+            {/* <button className='button-class' onClick={() => {
                 search();
                 openModal();
-            }}>Search</button>
+            }}>Search</button> */}
             <Modal open={open} close={closeModal} title="Select Song">
                 <SearchPopup data={data} selectedSong={selectedSong} setSelectedSong={setSelectedSong}/>
             </Modal>

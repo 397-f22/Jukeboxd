@@ -21,13 +21,8 @@ const ProfilePage = () => {
       }
   
     return( 
-        <div className="container">
-            
-            <div>
-                <CardGrid listOfRatingData={[dummydata, dummydata, dummydata]}/>
-                {/* <RatingCard data={dummydata}/> */}
-            </div>
-            
+        <div className="container"> 
+            <CardGrid listOfRatingData={[dummydata, dummydata, dummydata, dummydata, dummydata]}/>
         </div>  
     );
 }
