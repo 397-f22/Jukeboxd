@@ -7,9 +7,6 @@ const Header = () => {
             <img src="https://i.imgur.com/yi37i4n.png" style={{width: "50px", marginRight: "10px"}}/>
             <h1 className="title">Jukeboxd</h1>
         </div>
-        <div className='searchbox-container'>
-            <Searchbox/>
-        </div>
     </div>
 }
 
