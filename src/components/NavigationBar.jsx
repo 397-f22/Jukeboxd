@@ -16,7 +16,7 @@ const NavigationBar = () => {
     }
     
     return (
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={2}>
+        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 1}} elevation={2}>
             <BottomNavigation
             showLabels
             value={value}
