@@ -27,21 +27,23 @@ const Searchbox = () => {
     }
 
     return (
-        <div className="container">
+        <div className="searchbox-container">
             <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm}></input>
             <button className='button-class' onClick={() => {
                 search();
+
             }}>Search</button>
             {data.length > 0 && <div className="search-song">
-                {data.map((song, i) => {
+                {data.slice(0, 4).map((song, i) => {
                     return <div className={song === selectedSong ? "selected" : "unselected"} onClick={() => props.setSelectedSong(song)} key={i}>
-                        <img src={song.album.image_url} className="album-cover"/>
+                        <img src={song.album.image_url} className="album-cover" />
                         <div className="info">
                             <div>Song: {song.name}</div>
                             <div>Album: {song.album.name}</div>
-                            <div>Artist: {song.artist.name}</div>                    
+                            <div>Artist: {song.artist.name}</div>
                         </div>
-                    </div>})}
+                    </div>
+                })}
             </div>}
         </div>
     );
