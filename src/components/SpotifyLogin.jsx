@@ -1,20 +1,16 @@
+export const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const SpotifyLogin = ({accessToken}) => {
-    var Spotify = require('spotify-web-api-js');
-    var s = new Spotify();
+//different by machine
+const redirectUri = 'http://localhost:5173/'
 
+const clientId = "adc3ee4239714aa9892b10fc05987a8e"
 
-    var spotifyApi = new SpotifyWebApi();
-    spotifyApi.setAccessToken({accessToken});
-    spotifyApi
-    .getUserPlaylists() // note that we don't pass a user id
-    .then(
-        function (data) {
-        console.log('User playlists', data);
-        },
-        function (err) {
-        console.error(err);
-        }
-  );
+const scopes = [
+  "user-read-currently-playing",
+  "user-read-recently-played",
+  "user-read-playback-state",
+  "user-top-read",
+  "user-modify-playback-state"
+]
 
-}
+export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;

@@ -1,5 +1,6 @@
 import './App.css';
 import Searchbox from './components/Searchbox.jsx'
+import {loginUrl} from './components/SpotifyLogin.jsx'
 
 const Header = () => {
 
@@ -15,7 +16,8 @@ const Header = () => {
             <h1 className="title">Jukeboxd</h1>
         </div>
         <div className='searchbox-container'>
-            <Searchbox/>
+            {/* <Searchbox/> */}
+            <a href={loginUrl} id='signInButton'> Sign in with Spotify! </a>
         </div>
     </div>
 }
