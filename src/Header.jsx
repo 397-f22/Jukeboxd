@@ -1,12 +1,40 @@
 import './App.css';
 import Searchbox from './components/Searchbox.jsx'
-import {loginUrl} from './components/SpotifyLogin.jsx'
+import { loginUrl, getTokenFromUrl} from './utilities/SpotifyLogin.jsx'
+import SpotifyWebApi from "spotify-web-api-js";
+import { useState, useEffect } from "react";
 
 const Header = () => {
+    const spotify = new SpotifyWebApi();
+    const [spotifyToken, setSpotifyToken] = useState("");
+    const [user, setUser] = useState({});
 
     const backToHomepage = () => {
         window.location.href = "/";
     }
+
+    useEffect(() => {
+        console.log("this is what we derived from the URL: ", getTokenFromUrl())
+        //this is for the spotify token
+        const _spotifyToken = getTokenFromUrl().access_token;
+        //we don't want it in the URI
+        window.location.hash = "";
+
+        console.log("THIS IS OUR SPOTIFY TOKEN ". _spotifyToken)
+
+        if(_spotifyToken){
+            setSpotifyToken(_spotifyToken)
+            console.log(_spotifyToken)
+
+            spotify.setAccessToken(_spotifyToken)
+
+            spotify.getMe().then((user) => {
+                console.log("DIS YOU: ", user) 
+
+                setUser(user);
+            })
+        }
+    })
 
     return <div className="App-header">
         <div className='logo'>
@@ -17,7 +45,8 @@ const Header = () => {
         </div>
         <div className='searchbox-container'>
             {/* <Searchbox/> */}
-            <a href={loginUrl} id='signInButton'> Sign in with Spotify! </a>
+            {spotifyToken != "" ? "Hi, " + user.display_name : <a href={loginUrl} id='signInButton'> Sign in with Spotify! </a>}
+            
         </div>
     </div>
 }
