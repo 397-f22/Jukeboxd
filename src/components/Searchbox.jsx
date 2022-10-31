@@ -20,13 +20,13 @@ const Searchbox = ({data, id, newRatingId, close}) => {
 
     const writeSongToDb = () => {
         update(
-            {Reviews: [...data, {
+            {Reviews: [{
                 "songName": selectedSong.name,
                 "artist": selectedSong.artist.name,
                 "albumCover": selectedSong.album.image_url,
                 "stars": 0,
                 "comment": ""
-            }]}
+            }, ...data]}
         );
         close();
     };
@@ -57,8 +57,8 @@ const Searchbox = ({data, id, newRatingId, close}) => {
 
     return (
         <div className="searchbox-container">
-            <div>
-                <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm} className="input"></input>
+            <div style={{display: "flex", flexDirection: "row"}}>
+                <input type="text" placeholder="Song Name" value={searchTerm} onChange={updateSearchTerm} className="input"></input>
                 <button className='search-button' onClick={() => {
                     search();
                 }}>Search</button>

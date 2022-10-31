@@ -8,7 +8,7 @@ const ProfilePage = (props) =>  {
     const [data, error] = useDbData(`/${id}/Reviews`);
     console.log(data, error, `/${id}/Reviews`);
   
-    return <div className="container" style={{marginTop: "2rem"}}>
+    return <div className="container" style={{marginTop: "2rem", }}>
         {data && <CardGrid listOfRatingData={data} id={id}/>}
         <div style={{height: "100px"}}/>
     </div>;
