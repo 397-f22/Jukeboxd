@@ -3,6 +3,9 @@ export const authEndpoint = "https://accounts.spotify.com/authorize";
 //different by machine
 const redirectUri = 'http://localhost:5173/'
 
+// so here is the problem: because we are in development mode,
+// users must be explicitly added under the section "Users and Access" in Spotify Dashborad before they can authenticate.
+// therefore, we can only access user's data when their emails are added to Spotify Dashborad
 const clientId = "0a5700cefade42268aefab52223fbc63"
 
 const scopes = [
