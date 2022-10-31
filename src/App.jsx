@@ -25,7 +25,7 @@ const App = () => {
               <Homepage /> {/* sign in */}
             </div>
           } />
-          <Route path="/profile" element={
+          <Route path="/profile/:id" element={
             <div>
               <ProfileForUrl />  {/* add inputs later (i.e. username, etc )? */}
             </div>

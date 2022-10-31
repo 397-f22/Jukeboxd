@@ -4,7 +4,21 @@
 }
 
 .card-img-top {
-    width: 65%;
-    object-fit: cover;
+  width: 50%;
+  object-fit: cover;
 }
 
+.song-card {
+  border: black;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: thin;
+  padding: 10px;
+  width: 20rem;
+}
+
+.card-body {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
