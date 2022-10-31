@@ -1,10 +1,10 @@
 /* https://stackoverflow.com/a/47698201/4564359 */
-.container{
-  display: flex;
-}
-
 .card-img-top {
     width: 65%;
     object-fit: cover;
+}
+
+.rating-star{
+  margin-bottom: 10px;
 }
 

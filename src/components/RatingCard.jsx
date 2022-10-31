@@ -11,6 +11,12 @@ const RatingCard = ({data}) => {
     const handleRating = (rating) => {
         setRating(rating);
     }
+
+
+    const handleChange = (evt) => {
+
+    }
+
     
     return (
         <div className="card m-1 p-2">
@@ -20,13 +26,12 @@ const RatingCard = ({data}) => {
             <div className="card-body">
             <h5 className="card-title">{data.name}</h5>
             <p className="card-text">{data.artist.name}</p>
-            <Rating
-                onClick={handleRating}
-            />
-
-            <TextField className="comment" label="Comment" variant="outlined" />
-
-            {/* <p className="card-text">{formatPrice(product.price)}</p> */}
+            <div className="rating-star">
+                <Rating
+                    onClick={handleRating}
+                />
+            </div>
+            <TextField className="comment" multiline label="Comment" variant="outlined" />
             </div>
         </div>
     )

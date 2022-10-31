@@ -57,6 +57,10 @@ button {
   font-size: calc(10px + 2vmin);
 }
 
+#search-box{
+  color: white;
+}
+
 .search-song {
   color: black;
   font-size: 15px;
@@ -64,7 +68,7 @@ button {
 
 .search-song .selected {
   border-style: solid;
-  border-color: red;
+  border-color: green;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -93,6 +97,7 @@ button {
   margin: 10px;
 }
 
+
 .searchbox-container {
   display: flex;
   flex-direction: column;
@@ -113,4 +118,8 @@ button {
   margin-bottom: 10px;
   border-radius: 10px;
   width: 50%;
+=======
+.authBtn{
+  margin-right: 10px;
+
 }
