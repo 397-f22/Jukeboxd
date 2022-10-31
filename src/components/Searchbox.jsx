@@ -1,11 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
-import { useState } from 'react';
-import SearchPopup from './SearchPopup.jsx';
-import Modal from './Modal.jsx';
-import { OutlinedInput, Fab } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-
 
 const Searchbox = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,23 +19,12 @@ const Searchbox = () => {
     };
 
     const search = () => {
-
         fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
             .then(response => response.json())
             .then(d => {
                 console.log(d);
                 setData(d);
-
-        if(searchTerm){
-            fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
-                .then(response => response.json())
-                .then(d => {
-                    //console.log(d);
-                    setData(d);
-
             });
-            openModal();
-        }
     }
 
     useEffect(() => {
@@ -61,7 +44,6 @@ const Searchbox = () => {
       }, []);
 
     return (
-
         <div className="searchbox-container">
             <div>
                 <input type="text" placeholder="Search..." value={searchTerm} onChange={updateSearchTerm} className="input"></input>
@@ -83,7 +65,6 @@ const Searchbox = () => {
                     Create Review
                 </button>
             </div>}
-
         </div>
     );
 }
