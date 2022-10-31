@@ -9,12 +9,14 @@ const RatingCard = ({data}) => {
 
     const [rating, setRating] = useState(0);
     const handleRating = (rating) => {
-        setRating(rate);
+        setRating(rating);
     }
+
 
     const handleChange = (evt) => {
 
     }
+
     
     return (
         <div className="card m-1 p-2">

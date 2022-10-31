@@ -82,6 +82,8 @@ const Header = () => {
                  onClick={backToHomepage}/>
             <h1 className="title">Jukeboxd</h1>
         </div>
+
+
         <div className='searchbox-container'>
             {/* <Searchbox/> */}
             {spotifyAuth ? 
@@ -103,6 +105,7 @@ const Header = () => {
             }
             
         </div>
+
     </div>
 }
 
