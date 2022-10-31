@@ -23,7 +23,7 @@ const NavigationBar = () => {
             onChange={clickNavBar}
             >
                 <BottomNavigationAction label="Friends" icon={<GroupIcon />} value="/friends" />
-                <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} value="/profile"/>
+                <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} value="/profile/OwenJanssen"/>
             </BottomNavigation>
         </Paper>
         

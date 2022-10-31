@@ -1,6 +1,6 @@
 .card-grid {
     display: grid;
-
-    grid-template-columns: repeat(auto-fill, 22rem);
-
+    grid-template-columns: repeat(auto-fill, 18rem);
+    grid-gap: 2rem;
+    justify-content: center;
 }

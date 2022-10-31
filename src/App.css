@@ -120,3 +120,13 @@ button {
   width: 50%;
   margin-right: 10px;
 }
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authBtn {
+  margin-right: 10px;
+}

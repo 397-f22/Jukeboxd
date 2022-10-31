@@ -12,7 +12,7 @@ const NewRatingCard = ({data, id, newRatingId}) => {
 
     return (
         <div>
-            <div onClick={openModal} className="song-card">
+            <div onClick={openModal} className="new-song-card">
                 <h1>+</h1>
             </div>
             <Modal open={open} close={closeModal}>
