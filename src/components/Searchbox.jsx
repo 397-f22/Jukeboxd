@@ -25,7 +25,8 @@ const Searchbox = ({data, id, newRatingId, close}) => {
                 "artist": selectedSong.artist.name,
                 "albumCover": selectedSong.album.image_url,
                 "stars": 0,
-                "comment": ""
+                "comment": "",
+                "date": Date.now()
             }, ...data]}
         );
         close();

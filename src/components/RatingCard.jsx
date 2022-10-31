@@ -11,7 +11,8 @@ const RatingCard = ({id, data, index}) => {
     const [update, result] = useDbUpdate(`/${id}/Reviews/${index}`);
     const handleRating = (rating) => {
         update({
-            "stars": rating
+            "stars": rating,
+            "date": Date.now()
         });
         setRating(rating);
     }
@@ -19,7 +20,8 @@ const RatingCard = ({id, data, index}) => {
 
     const handleComment = (event) => {
         update({
-            "comment": event.target.value
+            "comment": event.target.value,
+            "date": Date.now()
         });
         setComment(event.target.value);
     }
