@@ -16,12 +16,14 @@ const RatingCard = ({id, data, index}) => {
         setRating(rating);
     }
 
+
     const handleComment = (event) => {
         update({
             "comment": event.target.value
         });
         setComment(event.target.value);
     }
+
     
     return (
         <div className="song-card">
@@ -29,11 +31,13 @@ const RatingCard = ({id, data, index}) => {
                 <img src={data.albumCover} className="card-img-top"/>
             </div>
             <div className="card-body">
+
                 <h5 className="card-title">{data.songName}</h5>
                 <h6 className="card-text">{data.artist}</h6>
                 <Rating initialValue={rating} onClick={handleRating} style={{marginBottom: "20px"}}/>
 
                 <input type="text" className="comment" value={data.comment} onChange={handleComment} />
+
             </div>
         </div>
     )

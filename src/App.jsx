@@ -5,6 +5,8 @@ import Header from './Header.jsx'
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import Homepage from './components/Homepage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
+import NavigationBar from './components/NavigationBar.jsx';
+
 
 const ProfileForUrl = ({data}) => {
   const { id } = useParams();
@@ -32,6 +34,7 @@ const App = () => {
           } />
         </Routes>        
       </BrowserRouter>
+      <NavigationBar />
     </div>
   );
 };

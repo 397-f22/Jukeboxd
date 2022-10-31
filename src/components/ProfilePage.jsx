@@ -8,9 +8,11 @@ const ProfilePage = (props) =>  {
     const [data, error] = useDbData(`/${id}/Reviews`);
     console.log(data, error, `/${id}/Reviews`);
   
+
     return <div className="container">
         {data && <CardGrid listOfRatingData={data} id={id}/>}
     </div>;
+
 }
 
 export default ProfilePage;

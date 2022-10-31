@@ -1,12 +1,9 @@
 /* https://stackoverflow.com/a/47698201/4564359 */
-.container{
-  display: flex;
-}
-
 .card-img-top {
   width: 50%;
   object-fit: cover;
 }
+
 
 .song-card {
   border: black;
@@ -22,3 +19,4 @@
   display: flex;
   flex-direction: column;
 }
+
