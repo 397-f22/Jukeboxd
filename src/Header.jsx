@@ -54,7 +54,7 @@ const Header = () => {
         }
 
         //get user info
-        if(!user){
+        if(!user && spotifyAuth){
             spotify.setAccessToken(spotifyToken)
 
             spotify.getMe().then((user) => {
