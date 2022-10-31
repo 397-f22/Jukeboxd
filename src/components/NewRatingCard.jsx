@@ -5,23 +5,19 @@ import './RatingCard.css';
 import Searchbox from './Searchbox';
 import Modal from './Modal';
 
-// const formatPrice = new Intl.NumberFormat([], { style: 'currency', currency: 'USD' }).format;
-
-
-const NewRatingCard = ({ data }) => {
-
+const NewRatingCard = ({data, id, newRatingId}) => {
     const [open, setOpen] = useState(false);
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
 
-
-
     return (
         <div>
-            <div onClick={openModal} className="card m-1 p-2">
+            <div onClick={openModal} className="song-card">
                 <h1>+</h1>
             </div>
-            <Modal open={open} close={closeModal}><Searchbox /></Modal>
+            <Modal open={open} close={closeModal}>
+                <Searchbox id={id} newRatingId={newRatingId} data={data} close={closeModal}/>
+            </Modal>
         </div>
     )
 };

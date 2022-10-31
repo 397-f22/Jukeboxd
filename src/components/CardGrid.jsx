@@ -1,18 +1,19 @@
 import RatingCard from './RatingCard.jsx'
 
 import NewRatingCard from './NewRatingCard.jsx';
+import "./CardGrid.css"
 
-import './CardGrid.css';
 
+const CardGrid = ({listOfRatingData, id}) => {
+    return listOfRatingData && <div className="card-grid">
+      <NewRatingCard data={listOfRatingData} id={id} newRatingId={listOfRatingData.length}/>
 
-const CardGrid = ({listOfRatingData}) => (
-    <div className="card-grid">
       {
-        listOfRatingData.map(songData => <RatingCard data={songData}/>)
-
+        listOfRatingData.map((songData, i) => 
+          <RatingCard data={songData} id={id} index={i}/>
+        )
       }
-      <NewRatingCard/>
     </div>
-  );
+  };
   
   export default CardGrid;

@@ -1,11 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
+import { useDbData, useDbUpdate } from '../utilities/firebase';
 
-const Searchbox = () => {
+const Searchbox = ({data, id, newRatingId, close}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSong, setSelectedSong] = useState(undefined);
-    const [data, setData] = useState([]);
+    const [songData, setSongData] = useState([]);
+    
     const [open, setOpen] = useState(false);
+    console.log(newRatingId)
+    const [update, result] = useDbUpdate(`/${id}`);
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
@@ -15,15 +19,23 @@ const Searchbox = () => {
     }
 
     const writeSongToDb = () => {
-        
+        update(
+            {Reviews: [...data, {
+                "songName": selectedSong.name,
+                "artist": selectedSong.artist.name,
+                "albumCover": selectedSong.album.image_url,
+                "stars": 0,
+                "comment": ""
+            }]}
+        );
+        close();
     };
 
     const search = () => {
         fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
             .then(response => response.json())
             .then(d => {
-                console.log(d);
-                setData(d);
+                setSongData(d);
             });
     }
 
@@ -51,8 +63,8 @@ const Searchbox = () => {
                     search();
                 }}>Search</button>
             </div>
-            {data.length > 0 && <div className="search-song">
-                {data.slice(0, 4).map((song, i) => {
+            {songData.length > 0 && <div className="search-song">
+                {songData.slice(0, 4).map((song, i) => {
                     return <div className={song === selectedSong ? "selected" : "unselected"} onClick={() => setSelectedSong(song)} key={i}>
                         <img src={song.album.image_url} className="album-cover" />
                         <div className="info">
