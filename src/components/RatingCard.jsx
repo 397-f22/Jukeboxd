@@ -37,8 +37,13 @@ const RatingCard = ({id, data, index}) => {
                 <h5 className="card-title">{data.songName}</h5>
                 <h6 className="card-text">{data.artist}</h6>
                 <Rating initialValue={rating} onClick={handleRating} style={{marginBottom: "20px"}}/>
-
-                <input type="text" className="comment" value={data.comment} onChange={handleComment} />
+                <TextField className="comment"
+                           label="Comment"
+                           multiline 
+                           variant="outlined" 
+                           value={data.comment} 
+                           onChange={handleComment}/>
+                {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
 
             </div>
         </div>
