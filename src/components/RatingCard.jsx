@@ -29,7 +29,7 @@ const RatingCard = ({id, data, index}) => {
     
     return (
         <div className="song-card">
-            <div>
+            <div className="img-container">
                 <img src={data.albumCover} className="card-img-top"/>
             </div>
             <div className="card-body">

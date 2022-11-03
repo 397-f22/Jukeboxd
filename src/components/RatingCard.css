@@ -1,8 +1,14 @@
 /* https://stackoverflow.com/a/47698201/4564359 */
 .card-img-top {
-  width: 50%;
-  height: 50%;
+  width: 80%;
   object-fit: cover;
+}
+
+.song-card .img-container {
+  height: 215px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .new-song-card {
@@ -17,6 +23,7 @@
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
+  background-color: rgb(235, 235, 235);
 }
 
 .song-card {
@@ -27,6 +34,7 @@
   padding: 10px;
   width: 18rem;
   height: 100%;
+  background-color: rgb(235, 235, 235);
 }
 
 .card-body {
@@ -38,4 +46,12 @@
 .card-body .comment {
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.card-body .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+  padding-right: 10px;
 }
