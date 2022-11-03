@@ -10,6 +10,15 @@ const NavigationBar = () => {
 
     var [value, setValue] = useState(window.location.pathname);
 
+    const goToProfile = () => {
+        // console.log("here")
+        // console.log(user.id)
+        // console.log("^^")
+        
+
+        window.location.href = `/profile/${user.id}`; 
+    }
+
     const clickNavBar = (event, newValue) => {
         setValue(newValue);
         window.location.href = newValue;
@@ -23,7 +32,7 @@ const NavigationBar = () => {
             onChange={clickNavBar}
             >
                 <BottomNavigationAction label="Friends" icon={<GroupIcon />} value="/friends" />
-                <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} value="/profile/OwenJanssen"/>
+                <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} onClick={goToProfile}/>
             </BottomNavigation>
         </Paper>
         
