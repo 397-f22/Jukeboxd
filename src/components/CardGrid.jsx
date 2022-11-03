@@ -10,7 +10,7 @@ const CardGrid = ({listOfRatingData, id}) => {
 
       {
         listOfRatingData.map((songData, i) => 
-          <RatingCard data={songData} id={id} index={i}/>
+          <RatingCard data={songData} id={id} index={i} key={i}/>
         )
       }
     </div>
