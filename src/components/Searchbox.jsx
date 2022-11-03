@@ -13,16 +13,32 @@ const Searchbox = ({data, id, newRatingId, close}) => {
     }
 
     const writeSongToDb = () => {
-        update(
-            {Reviews: [{
-                "songName": selectedSong.name,
-                "artist": selectedSong.artist.name,
-                "albumCover": selectedSong.album.image_url,
-                "stars": 0,
-                "comment": "",
-                "date": Date.now()
-            }, ...data]}
-        );
+        console.log(data)
+        // if db has no entries
+        if (data === null) {
+            update(
+                {reviews: [{
+                    "songName": selectedSong.name,
+                    "artist": selectedSong.artist.name,
+                    "albumCover": selectedSong.album.image_url,
+                    "stars": 0,
+                    "comment": "",
+                    "date": Date.now()
+                }]}
+            );
+        }
+        else {
+            update(
+                {reviews: [{
+                    "songName": selectedSong.name,
+                    "artist": selectedSong.artist.name,
+                    "albumCover": selectedSong.album.image_url,
+                    "stars": 0,
+                    "comment": "",
+                    "date": Date.now()
+                }, ...data]}
+            );
+        }
         close();
     };
 

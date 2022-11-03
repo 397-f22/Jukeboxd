@@ -7,7 +7,7 @@ import { useDbUpdate } from '../utilities/firebase';
 const RatingCard = ({id, data, index}) => {
     const [rating, setRating] = useState(data.stars);
     const [comment, setComment] = useState(data.comment);
-    const [update, result] = useDbUpdate(`/${id}/Reviews/${index}`);
+    const [update, result] = useDbUpdate(`/${id}/reviews/${index}`);
     const handleRating = (rating) => {
         update({
             "stars": rating,

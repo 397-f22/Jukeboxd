@@ -6,12 +6,12 @@ import { useDbData, useDbUpdate } from '../utilities/firebase.js';
 const ProfilePage = (props) => {
     const id = props.id;
     const user = props.user;
-    const [data, error] = useDbData(`/${id}/Reviews`);
+    const [data, error] = useDbData(`/${id}/reviews`);
     console.log(user);
-    return id === user.id ? <div className="container" style={{ marginTop: "2rem", }}>
+    return <div className="container" style={{ marginTop: "2rem", }}>
         <CardGrid user={user} listOfRatingData={data} id={id} />
         <div style={{ height: "100px" }} />
-    </div> : <div>{`Hello ${user.id}!`}</div>;
+    </div>;
 }
 
 export default ProfilePage;

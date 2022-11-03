@@ -7,23 +7,6 @@ import { useDbUpdate } from '../utilities/firebase';
 const RatingCardFriend = ({ id, data, index }) => {
     const [rating, setRating] = useState(data.stars);
     const [comment, setComment] = useState(data.comment);
-    const [update, result] = useDbUpdate(`/${id}/Reviews/${index}`);
-    const handleRating = (rating) => {
-        update({
-            "stars": rating,
-            "date": Date.now()
-        });
-        setRating(rating);
-    }
-
-
-    const handleComment = (event) => {
-        update({
-            "comment": event.target.value,
-            "date": Date.now()
-        });
-        setComment(event.target.value);
-    }
 
 
     return (

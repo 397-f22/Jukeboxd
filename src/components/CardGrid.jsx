@@ -3,6 +3,8 @@ import RatingCard from './RatingCard.jsx'
 import NewRatingCard from './NewRatingCard.jsx';
 import "./CardGrid.css"
 
+import RatingCardFriend from './RatingCardFriend.jsx';
+
 
 const CardGrid = ({ listOfRatingData, user, id }) => {
 
@@ -18,7 +20,7 @@ const CardGrid = ({ listOfRatingData, user, id }) => {
       )
     }
   </div> : <NewRatingCard data={listOfRatingData} id={id} newRatingId={0} />}
-  </div> : <div>{
+  </div> : listOfRatingData && <div>{
 
     listOfRatingData.map((songData, i) =>
       <RatingCardFriend data={songData} id={id} index={i} key={i} />
