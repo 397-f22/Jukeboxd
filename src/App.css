@@ -29,6 +29,7 @@
   flex-direction: row;
   align-items: center;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .searchbox-container {
@@ -127,4 +128,7 @@ button {
 
 .authBtn {
   margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
