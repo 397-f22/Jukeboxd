@@ -5,7 +5,6 @@ import './RatingCard.css';
 import { useDbUpdate } from '../utilities/firebase';
 
 const RatingCard = ({id, data, index}) => {
-    console.log(data);
     const [rating, setRating] = useState(data.stars);
     const [comment, setComment] = useState(data.comment);
     const [update, result] = useDbUpdate(`/${id}/Reviews/${index}`);

@@ -6,13 +6,7 @@ const Searchbox = ({data, id, newRatingId, close}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSong, setSelectedSong] = useState(undefined);
     const [songData, setSongData] = useState([]);
-    
-    const [open, setOpen] = useState(false);
-    console.log(newRatingId)
     const [update, result] = useDbUpdate(`/${id}`);
-
-    const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
 
     const updateSearchTerm = (event) => {
         setSearchTerm(event.target.value);
@@ -42,8 +36,6 @@ const Searchbox = ({data, id, newRatingId, close}) => {
 
     useEffect(() => {
         const keyDownHandler = event => {
-          console.log('User pressed: ', event.key);
-    
           if (event.key === 'Enter') {
             search();
           }
