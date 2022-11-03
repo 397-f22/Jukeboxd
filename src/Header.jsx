@@ -7,8 +7,9 @@ import { WindowRounded } from '@mui/icons-material';
 import { Fab } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useDbData, useDbUpdate } from './utilities/firebase.js';
 
-const Header = ({user, setUser}) => {
+const Header = ({user, setUser, data}) => {
     const spotify = new SpotifyWebApi();
     const [spotifyToken, setSpotifyToken] = useState("");
     //check if needs login aggain because every token expires in one hour;
@@ -32,14 +33,14 @@ const Header = ({user, setUser}) => {
     //reference: https://javascript.plainenglish.io/how-to-include-spotify-authorization-in-your-react-app-577b63138fd7
     //another reference: https://dev.to/dom_the_dev/how-to-use-the-spotify-api-in-your-react-js-app-50pn
     useEffect(() => {
-        console.log("this is what we derived from the URL: ", getTokenFromUrl())
+        //console.log("this is what we derived from the URL: ", getTokenFromUrl())
         //this is for the spotify token
         const hash = window.location.hash
         let spotifyToken = window.localStorage.getItem("spotifyToken")
 
         if (!spotifyToken && hash) {
             spotifyToken = getTokenFromUrl().access_token;        
-            console.log("THIS IS OUR SPOTIFY TOKEN ". spotifyToken)
+            //console.log("THIS IS OUR SPOTIFY TOKEN ". spotifyToken)
 
             //we don't want it in the URI
             window.location.hash = ""
@@ -55,12 +56,10 @@ const Header = ({user, setUser}) => {
         //get user info
         if(!user && spotifyAuth){
             spotify.setAccessToken(spotifyToken)
-
             spotify.getMe().then((user) => {
                 console.log("DIS YOU: ", user) 
                 setUser(user);
-
-
+            
             }).catch((err) => {
                 //usually because token expires
                 if(err.status == 401){
@@ -70,7 +69,7 @@ const Header = ({user, setUser}) => {
 
             //Just an example to get recentlyplayedtracks
             spotify.getMyRecentlyPlayedTracks().then((data) => {
-                console.log("RECENTLY PLAYED: ", data);
+                //console.log("RECENTLY PLAYED: ", data);
             })
         }
     })

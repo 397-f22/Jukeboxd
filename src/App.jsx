@@ -6,17 +6,24 @@ import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import Homepage from './components/Homepage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
+import { useDbData } from './utilities/firebase';
 
-
-const ProfileForUrl = ({ user }) => {
+const ProfileForUrl = ({ user, data }) => {
   const { id } = useParams();
 
-  return <ProfilePage id={id} user={user} />;
+  return <ProfilePage id={id} user={user} data={data} />;
 };
+
+// const FriendsForUrl = ({ user, data }) => {
+//   const { id } = useParams();
+
+//   return <FriendsPage id={id} user={user} data={data} />;
+// };
 
 const App = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState(0);
+  const [data, error] = useDbData(`/`)
 
   return (
     <div className="App">
@@ -31,7 +38,7 @@ const App = () => {
           } />
           <Route path="/profile/:id" element={
             <div>
-              <ProfileForUrl user={user} />  {/* add inputs later (i.e. username, etc )? */}
+              <ProfileForUrl user={user} data={data} />
             </div>
           } />
         </Routes>

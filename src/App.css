@@ -132,3 +132,15 @@ button {
   flex-direction: row;
   align-items: center;
 }
+
+.friend-profile-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.friend-profile-header .text {
+  margin-bottom: 0px;
+}

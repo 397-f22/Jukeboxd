@@ -50,6 +50,15 @@
   margin-left: 10px;
 }
 
+.card-body .friend-comment {
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: solid;
+  border-width: 1px;
+  padding: 10px;
+}
+
 .card-body .card-title {
   white-space: nowrap;
   overflow: hidden;

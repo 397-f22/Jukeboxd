@@ -3,13 +3,9 @@ import { useState } from 'react';
 import CardGrid from './CardGrid.jsx'
 import { useDbData, useDbUpdate } from '../utilities/firebase.js';
 
-const ProfilePage = (props) => {
-    const id = props.id;
-    const user = props.user;
-    const [data, error] = useDbData(`/${id}/reviews`);
-    console.log(user);
+const ProfilePage = ({id, user, data}) => {
     return <div className="container" style={{ marginTop: "2rem", }}>
-        <CardGrid user={user} listOfRatingData={data} id={id} />
+        <CardGrid user={user} data={data} id={id} />
         <div style={{ height: "100px" }} />
     </div>;
 }
