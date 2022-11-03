@@ -8,10 +8,10 @@ import ProfilePage from './components/ProfilePage.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
 
 
-const ProfileForUrl = ({data}) => {
+const ProfileForUrl = ({ user }) => {
   const { id } = useParams();
 
-  return <ProfilePage id={id} data={data} />;
+  return <ProfilePage id={id} user={user} />;
 };
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header user = {user} setUser = {setUser}/>
+      <Header user={user} setUser={setUser} />
 
       <BrowserRouter>
         <Routes>
@@ -31,12 +31,12 @@ const App = () => {
           } />
           <Route path="/profile/:id" element={
             <div>
-              <ProfileForUrl />  {/* add inputs later (i.e. username, etc )? */}
+              <ProfileForUrl user={user} />  {/* add inputs later (i.e. username, etc )? */}
             </div>
           } />
-        </Routes>        
+        </Routes>
       </BrowserRouter>
-      <NavigationBar user = {user} />
+      <NavigationBar user={user} />
     </div>
   );
 };
