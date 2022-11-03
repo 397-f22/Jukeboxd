@@ -1,18 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { useDbData, useDbUpdate } from '../utilities/firebase';
+import 'isomorphic-unfetch'
+import { getPreview } from 'spotify-url-info'; 
 
-const Searchbox = ({data, id, newRatingId, close}) => {
+const Searchbox = ({data, id, close}) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedSong, setSelectedSong] = useState(undefined);
-    const [songData, setSongData] = useState([]);
-    
-    const [open, setOpen] = useState(false);
-    console.log(newRatingId)
+    const [selectedAlbum, setSelectedAlbum] = useState(undefined);
+    const [albumData, setAlbumData] = useState([]);
     const [update, result] = useDbUpdate(`/${id}`);
-
-    const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
 
     const updateSearchTerm = (event) => {
         setSearchTerm(event.target.value);
@@ -21,9 +17,9 @@ const Searchbox = ({data, id, newRatingId, close}) => {
     const writeSongToDb = () => {
         update(
             {Reviews: [{
-                "songName": selectedSong.name,
-                "artist": selectedSong.artist.name,
-                "albumCover": selectedSong.album.image_url,
+                "songName": selectedAlbum.title,
+                "artist": selectedAlbum.artist,
+                "albumCover": selectedAlbum.image,
                 "stars": 0,
                 "comment": "",
                 "date": Date.now()
@@ -33,10 +29,14 @@ const Searchbox = ({data, id, newRatingId, close}) => {
     };
 
     const search = () => {
-        fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=track`)
+        fetch(`//www.apitutor.org/spotify/simple/v1/search?q=${searchTerm}&type=album`)
             .then(response => response.json())
             .then(d => {
-                setSongData(d);
+                console.log(getPreview)
+                getPreview(d.spotify_url).then(data => {
+                    console.log(data);
+                    //setAlbumData(data);
+                });
             });
     }
 
@@ -64,9 +64,9 @@ const Searchbox = ({data, id, newRatingId, close}) => {
                     search();
                 }}>Search</button>
             </div>
-            {songData.length > 0 && <div className="search-song">
-                {songData.slice(0, 4).map((song, i) => {
-                    return <div className={song === selectedSong ? "selected" : "unselected"} onClick={() => setSelectedSong(song)} key={i}>
+            {albumData.length > 0 && <div className="search-song">
+                {albumData.slice(0, 4).map((song, i) => {
+                    return <div className={song === selectedAlbum ? "selected" : "unselected"} onClick={() => setSelectedAlbum(song)} key={i}>
                         <img src={song.album.image_url} className="album-cover" />
                         <div className="info">
                             <div>{song.name}</div>
