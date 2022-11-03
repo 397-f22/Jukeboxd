@@ -6,7 +6,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import Paper from '@mui/material/Paper';
 
 
-const NavigationBar = () => {
+const NavigationBar = ({user}) => {
 
     var [value, setValue] = useState(window.location.pathname);
 

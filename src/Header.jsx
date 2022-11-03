@@ -8,10 +8,9 @@ import { Fab } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const Header = () => {
+const Header = ({user, setUser}) => {
     const spotify = new SpotifyWebApi();
     const [spotifyToken, setSpotifyToken] = useState("");
-    const [user, setUser] = useState("");
     //check if needs login aggain because every token expires in one hour;
     const [spotifyAuth, setSpotifyAuth] = useState(false);
 
@@ -60,6 +59,7 @@ const Header = () => {
             spotify.getMe().then((user) => {
                 console.log("DIS YOU: ", user) 
                 setUser(user);
+
 
             }).catch((err) => {
                 //usually because token expires

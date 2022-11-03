@@ -16,10 +16,12 @@ const ProfileForUrl = ({data}) => {
 
 const App = () => {
   const [count, setCount] = useState(0);
+  const [user, setUser] = useState(0);
 
   return (
     <div className="App">
-      <Header/>
+      <Header user = {user} setUser = {setUser}/>
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={
@@ -34,7 +36,7 @@ const App = () => {
           } />
         </Routes>        
       </BrowserRouter>
-      <NavigationBar />
+      <NavigationBar user = {user} />
     </div>
   );
 };
