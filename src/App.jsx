@@ -7,11 +7,16 @@ import Homepage from './components/Homepage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
 import { useDbData } from './utilities/firebase';
+import ReviewNext from './components/ReviewNext';
 
-const ProfileForUrl = ({ user, data }) => {
+const ProfileForUrl = ({ user, data, recentSong, setRecentSong }) => {
   const { id } = useParams();
 
-  return <ProfilePage id={id} user={user} data={data} />;
+  return <div> 
+    
+    <ProfilePage id={id} user={user} data={data} recentSong = {recentSong} setRecentSong = {setRecentSong}/>
+
+  </div>;
 };
 
 // const FriendsForUrl = ({ user, data }) => {
@@ -23,11 +28,12 @@ const ProfileForUrl = ({ user, data }) => {
 const App = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState(0);
+  const [recentSong, setRecentSong] = useState(0);
   const [data, error] = useDbData(`/`)
 
   return (
     <div className="App">
-      <Header user={user} setUser={setUser} />
+      <Header user={user} setUser={setUser} recentSong = {recentSong} setRecentSong = {setRecentSong}/>
 
       <BrowserRouter>
         <Routes>

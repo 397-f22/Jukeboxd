@@ -9,7 +9,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDbData, useDbUpdate } from './utilities/firebase.js';
 
-const Header = ({user, setUser, data}) => {
+const Header = ({user, setUser, data, recentSong, setRecentSong}) => {
     const spotify = new SpotifyWebApi();
     const [spotifyToken, setSpotifyToken] = useState("");
     //check if needs login aggain because every token expires in one hour;
@@ -69,6 +69,9 @@ const Header = ({user, setUser, data}) => {
 
             //Just an example to get recentlyplayedtracks
             spotify.getMyRecentlyPlayedTracks().then((data) => {
+                recentSong = data.items[0].track.name;
+                setRecentSong(recentSong);
+                console.log(data.items[0].track);
                 //console.log("RECENTLY PLAYED: ", data);
             })
         }
