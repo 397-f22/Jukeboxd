@@ -4,7 +4,7 @@ import CardGrid from './CardGrid.jsx'
 import { useDbData, useDbUpdate } from '../utilities/firebase.js';
 
 const ProfilePage = ({id, user, data}) => {
-    return <div className="container" style={{ marginTop: "2rem", }}>
+    return data && <div className="container" style={{ marginTop: "2rem", }}>
         <CardGrid user={user} data={data} id={id} />
         <div style={{ height: "100px" }} />
     </div>;
