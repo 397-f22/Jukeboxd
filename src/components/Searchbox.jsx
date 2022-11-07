@@ -13,7 +13,7 @@ const Searchbox = ({data, id, newRatingId, close}) => {
     }
 
     const writeSongToDb = () => {
-        console.log(data)
+        console.log(selectedSong)
         // if db has no entries
         if (data === null) {
             update(

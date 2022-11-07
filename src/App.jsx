@@ -9,12 +9,12 @@ import NavigationBar from './components/NavigationBar.jsx';
 import { useDbData } from './utilities/firebase';
 import ReviewNext from './components/ReviewNext';
 
-const ProfileForUrl = ({ user, data, recentSong, setRecentSong }) => {
+const ProfileForUrl = ({ user, data, recentSongs, setRecentSongs }) => {
   const { id } = useParams();
 
   return <div>
 
-    <ProfilePage id={id} user={user} data={data} recentSong={recentSong} setRecentSong={setRecentSong} />
+    <ProfilePage id={id} user={user} data={data} recentSongs={recentSongs} setRecentSongs={setRecentSongs} />
 
   </div>;
 };
@@ -28,12 +28,12 @@ const ProfileForUrl = ({ user, data, recentSong, setRecentSong }) => {
 const App = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState(0);
-  const [recentSong, setRecentSong] = useState(0);
+  const [recentSongs, setRecentSongs] = useState([]);
   const [data, error] = useDbData(`/`)
 
   return (
     <div className="App">
-      <Header user={user} setUser={setUser} recentSong={recentSong} setRecentSong={setRecentSong} />
+      <Header user={user} setUser={setUser} recentSongs={recentSongs} setrecentSongs={setRecentSongs} />
 
       <BrowserRouter>
         <Routes>
@@ -44,7 +44,7 @@ const App = () => {
           } />
           <Route path="/profile/:id" element={
             <div>
-              <ProfileForUrl user={user} data={data} recentSong={recentSong} setRecentSong={setRecentSong} />
+              <ProfileForUrl user={user} data={data} recentSong={recentSongs} setRecentSong={setRecentSongs} />
             </div>
           } />
         </Routes>
