@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header user={user} setUser={setUser} recentSongs={recentSongs} setrecentSongs={setRecentSongs} />
+      <Header user={user} setUser={setUser} recentSongs={recentSongs} setRecentSongs={setRecentSongs} />
 
       <BrowserRouter>
         <Routes>
@@ -44,7 +44,7 @@ const App = () => {
           } />
           <Route path="/profile/:id" element={
             <div>
-              <ProfileForUrl user={user} data={data} recentSong={recentSongs} setRecentSong={setRecentSongs} />
+              <ProfileForUrl user={user} data={data} recentSongs={recentSongs} setRecentSongs={setRecentSongs} />
             </div>
           } />
         </Routes>

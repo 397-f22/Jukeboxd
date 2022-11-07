@@ -9,7 +9,7 @@ import SubscribeButton from './SubscribeButton.jsx';
 import ReviewNext from './ReviewNext.jsx';
 
 
-const ProfilePage = ({id: pageID, user, data, recentSong}) => {
+const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
     // if data (all db data), data[pageID] (data of person's page we're visiting), or data[user.id] 
     // (our data if we're logged in) are undefined then return a message our data is loading
     if (!data || (!data[pageID] || (user && !data[user.id]))) {
@@ -17,16 +17,23 @@ const ProfilePage = ({id: pageID, user, data, recentSong}) => {
     }
 
     const listOfRatingData = data[pageID].reviews;
+    console.log(recentSongs);
     
     return <div className="container" style={{ marginTop: "2rem", }}>
         {pageID === user.id ? 
             // if it's your page
-            <div className="card-grid">
-                <ReviewNext user={user} data={recentSong} id={pageID} />
-                <NewRatingCard data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
+            <div>
+                <div className="card-grid">
+                    {recentSongs && recentSongs.map((song, i) =>
+                        <ReviewNext user={user} data={song} id={pageID} key = {i}/> )}
+                </div>
+                <div className="card-grid">
+                    
+                    <NewRatingCard data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
 
-                {listOfRatingData && listOfRatingData.map((songData, i) =>
-                    <RatingCard data={songData} id={pageID} index={i} key={i} />)}
+                    {listOfRatingData && listOfRatingData.map((songData, i) =>
+                        <RatingCard data={songData} id={pageID} index={i} key={i} />)}
+                </div>
             </div> : 
 
             // viewing someone else's page

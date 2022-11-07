@@ -69,9 +69,9 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
 
             //Just an example to get recentlyplayedtracks
             spotify.getMyRecentlyPlayedTracks().then((data) => {
-                recentSong = data.items.slice(0, 3).track;
-                setRecentSongs(recentSong);
-                console.log(recentSong);
+                recentSongs = data.items.map(song => song.track).slice(0, 4);
+                setRecentSongs(recentSongs);
+                console.log(recentSongs);
                 console.log("RECENTLY PLAYED: ", data);
             })
         }
