@@ -23,7 +23,8 @@ const Searchbox = ({data, id, newRatingId, close}) => {
                     "albumCover": selectedSong.album.image_url,
                     "stars": 0,
                     "comment": "",
-                    "date": Date.now()
+                    "date": Date.now(),
+                    "likes": ""
                 }]}
             );
         }
@@ -35,7 +36,8 @@ const Searchbox = ({data, id, newRatingId, close}) => {
                     "albumCover": selectedSong.album.image_url,
                     "stars": 0,
                     "comment": "",
-                    "date": Date.now()
+                    "date": Date.now(),
+                    "likes": ""
                 }, ...data]}
             );
         }

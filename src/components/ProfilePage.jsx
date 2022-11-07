@@ -28,7 +28,6 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
                         <ReviewNext user={user} data={song} id={pageID} key = {i}/> )}
                 </div>
                 <div className="card-grid">
-                    
                     <NewRatingCard data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
 
                     {listOfRatingData && listOfRatingData.map((songData, i) =>
@@ -46,7 +45,7 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
 
                 <div className="card-grid">
                     {listOfRatingData && listOfRatingData.map((songData, i) =>
-                        <RatingCardFriend data={songData} id={pageID} index={i} key={i} />)}
+                        <RatingCardFriend user={user} songData={songData} id={pageID} index={i} key={i} data={data}/>)}
                 </div>
             </div>}
         <div style={{ height: "100px" }} />

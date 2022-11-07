@@ -13,9 +13,7 @@ const ProfileForUrl = ({ user, data, recentSongs, setRecentSongs }) => {
   const { id } = useParams();
 
   return <div>
-
     <ProfilePage id={id} user={user} data={data} recentSongs={recentSongs} setRecentSongs={setRecentSongs} />
-
   </div>;
 };
 

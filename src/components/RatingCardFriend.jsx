@@ -2,20 +2,21 @@ import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import { TextField } from "@mui/material";
 import './RatingCard.css';
+import LikeButton from './LikeButton';
 
-const RatingCardFriend = ({ id, data }) => {
+const RatingCardFriend = ({ id, songData, user, index, data }) => {
     return (
         <div className="song-card">
             <div className="img-container">
-                <img src={data.albumCover} className="card-img-top" />
+                <img src={songData.albumCover} className="card-img-top" />
             </div>
             <div className="card-body">
-                <h5 className="card-title">{data.songName}</h5>
-                <h6 className="card-text">{data.artist}</h6>
-                <Rating initialValue={data.stars} style={{ marginBottom: "20px" }} readonly/>
-                {data.comment && <div className="friend-comment">{data.comment}</div>}
+                <h5 className="card-title">{songData.songName}</h5>
+                <h6 className="card-text">{songData.artist}</h6>
+                <Rating initialValue={songData.stars} style={{ marginBottom: "20px" }} readonly/>
+                {songData.comment && <div className="friend-comment">{songData.comment}</div>}
                 {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-
+                {data && <LikeButton pageID={id} user={user} data={data} reviewIndex={index}/>}
             </div>
         </div>
     )
