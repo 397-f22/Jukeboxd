@@ -4,7 +4,6 @@ import { useDbData, useDbUpdate } from '../utilities/firebase.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RatingCard from './RatingCard.jsx'
 import NewRatingCard from './NewRatingCard.jsx';
-import "./CardGrid.css"
 import RatingCardFriend from './RatingCardFriend.jsx';
 import SubscribeButton from './SubscribeButton.jsx';
 
@@ -39,8 +38,7 @@ const ProfilePage = ({id: pageID, user, data}) => {
                     {listOfRatingData && listOfRatingData.map((songData, i) =>
                         <RatingCardFriend data={songData} id={pageID} index={i} key={i} />)}
                 </div>
-            </div>
-        }
+            </div>}
         <div style={{ height: "100px" }} />
     </div>
 }
