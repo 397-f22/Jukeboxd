@@ -1,6 +1,6 @@
 import './App.css';
 import Searchbox from './components/Searchbox.jsx'
-import { loginUrl, getTokenFromUrl} from './utilities/SpotifyLogin.jsx'
+import { loginUrl, getTokenFromUrl } from './utilities/SpotifyLogin.jsx'
 import SpotifyWebApi from "spotify-web-api-js";
 import { useState, useEffect } from "react";
 import { WindowRounded } from '@mui/icons-material';
@@ -9,7 +9,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDbData, useDbUpdate } from './utilities/firebase.js';
 
-const Header = ({user, setUser, data}) => {
+const Header = ({ user, setUser, data, recentSong, setRecentSong }) => {
     const spotify = new SpotifyWebApi();
     const [spotifyToken, setSpotifyToken] = useState("");
     //check if needs login aggain because every token expires in one hour;
@@ -39,7 +39,7 @@ const Header = ({user, setUser, data}) => {
         let spotifyToken = window.localStorage.getItem("spotifyToken")
 
         if (!spotifyToken && hash) {
-            spotifyToken = getTokenFromUrl().access_token;        
+            spotifyToken = getTokenFromUrl().access_token;
             //console.log("THIS IS OUR SPOTIFY TOKEN ". spotifyToken)
 
             //we don't want it in the URI
@@ -48,27 +48,30 @@ const Header = ({user, setUser, data}) => {
             window.localStorage.setItem("spotifyToken", spotifyToken)
         }
 
-        if(spotifyToken){
+        if (spotifyToken) {
             setSpotifyToken(spotifyToken)
             setSpotifyAuth(true);
         }
 
         //get user info
-        if(!user && spotifyAuth){
+        if (!user && spotifyAuth) {
             spotify.setAccessToken(spotifyToken)
             spotify.getMe().then((user) => {
-                console.log("DIS YOU: ", user) 
+                console.log("DIS YOU: ", user)
                 setUser(user);
-            
+
             }).catch((err) => {
                 //usually because token expires
-                if(err.status == 401){
+                if (err.status == 401) {
                     logout();
-                } 
+                }
             })
 
             //Just an example to get recentlyplayedtracks
             spotify.getMyRecentlyPlayedTracks().then((data) => {
+                recentSong = data.items[0].track;
+                setRecentSong(recentSong);
+                console.log(recentSong);
                 //console.log("RECENTLY PLAYED: ", data);
             })
         }
@@ -76,25 +79,25 @@ const Header = ({user, setUser, data}) => {
 
     return <div className="App-header">
         <div className='logo' onClick={backToHomepage}>
-            <img src="https://i.imgur.com/yi37i4n.png" 
-                 style={{width: "50px", marginRight: "10px", cursor: "pointer" }}
-                 onClick={backToHomepage}/>
+            <img src="https://i.imgur.com/yi37i4n.png"
+                style={{ width: "50px", marginRight: "10px", cursor: "pointer" }}
+                onClick={backToHomepage} />
             <h1 className="title">Jukeboxd</h1>
         </div>
 
 
         <div className='searchbox-container'>
             {/* <Searchbox/> */}
-            {spotifyAuth ? 
+            {spotifyAuth ?
                 <div className="authBtn">
-                    <div style={{marginRight: "10px", fontSize: "22px"}}>{"Hi, " + user.display_name}</div>
+                    <div style={{ marginRight: "10px", fontSize: "22px" }}>{"Hi, " + user.display_name}</div>
                     <div>
                         <Fab variant="extended" color="success" onClick={logout} id='logoutButton'>
                             <LogoutIcon sx={{ mr: 1 }} />
                             Log out
                         </Fab>
                     </div>
-                </div> : 
+                </div> :
                 <div className="authBtn">
                     <Fab variant="extended" color="success" onClick={login} id='signInButton'>
                         <LoginIcon sx={{ mr: 1 }} />
@@ -102,7 +105,7 @@ const Header = ({user, setUser, data}) => {
                     </Fab>
                 </div>
             }
-            
+
         </div>
 
     </div>
