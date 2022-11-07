@@ -6,23 +6,23 @@ import RatingCardFriend from './RatingCardFriend.jsx';
 import ReviewNext from './ReviewNext.jsx';
 
 
-const CardGrid = ({ data, user, id, recentSong, setRecentSong}) => {
+const CardGrid = ({ data, user, id, recentSong, setRecentSong }) => {
   const listOfRatingData = data ? data[id].reviews : undefined;
 
   const subscribeToProfile = () => {
 
   };
 
-  return id === user.id ? 
+  return id === user.id ?
     <div> {listOfRatingData ?
       <div className="card-grid">
-        
-        <NewRatingCard data={listOfRatingData} id={id} newRatingId={listOfRatingData.length}/>
+
+        <NewRatingCard data={listOfRatingData} id={id} newRatingId={listOfRatingData.length} />
         {listOfRatingData.map((songData, i) =>
           <RatingCard data={songData} id={id} index={i} key={i} />)}
         {listOfRatingData.map((songData, i) =>
-        <ReviewNext user = {user} data = {songData} index = {i} key = {i} recentSong = {recentSong} setRecentSong = {setRecentSong} ></ReviewNext>)}
-      </div> : 
+          <ReviewNext user={user} data={recentSong} index={i} key={i} recentSong={recentSong} setRecentSong={setRecentSong} ></ReviewNext>)}
+      </div> :
       <NewRatingCard data={listOfRatingData} id={id} newRatingId={0} />}
     </div> :
     listOfRatingData && <div>

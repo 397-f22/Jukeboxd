@@ -12,9 +12,9 @@ import ReviewNext from './components/ReviewNext';
 const ProfileForUrl = ({ user, data, recentSong, setRecentSong }) => {
   const { id } = useParams();
 
-  return <div> 
-    
-    <ProfilePage id={id} user={user} data={data} recentSong = {recentSong} setRecentSong = {setRecentSong}/>
+  return <div>
+
+    <ProfilePage id={id} user={user} data={data} recentSong={recentSong} setRecentSong={setRecentSong} />
 
   </div>;
 };
@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header user={user} setUser={setUser} recentSong = {recentSong} setRecentSong = {setRecentSong}/>
+      <Header user={user} setUser={setUser} recentSong={recentSong} setRecentSong={setRecentSong} />
 
       <BrowserRouter>
         <Routes>
@@ -44,7 +44,7 @@ const App = () => {
           } />
           <Route path="/profile/:id" element={
             <div>
-              <ProfileForUrl user={user} data={data} />
+              <ProfileForUrl user={user} data={data} recentSong={recentSong} setRecentSong={setRecentSong} />
             </div>
           } />
         </Routes>

@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 import './RatingCard.css';
 import { useDbUpdate } from '../utilities/firebase';
 
-const ReviewNext = ({id, data, index}) => {
+const ReviewNext = ({ id, data, index, recentSong, setRecentSong }) => {
     console.log(data);
     const [rating, setRating] = useState(data.stars);
     const [comment, setComment] = useState(data.comment);
@@ -26,24 +26,24 @@ const ReviewNext = ({id, data, index}) => {
         setComment(event.target.value);
     }
 
-    
+
     return (
         <div className="song-card">
             <h1>Review Next?</h1>
             <div className="img-container">
-                <img src={data.albumCover} className="card-img-top"/>
+                <img src={data.album.images[0].url} className="card-img-top" />
             </div>
             <div className="card-body">
 
                 <h5 className="card-title">{data.songName}</h5>
                 <h6 className="card-text">{data.artist}</h6>
-                <Rating initialValue={rating} onClick={handleRating} style={{marginBottom: "20px"}}/>
+                <Rating initialValue={rating} onClick={handleRating} style={{ marginBottom: "20px" }} />
                 <TextField className="comment"
-                           label="Comment"
-                           multiline 
-                           variant="outlined" 
-                           value={data.comment} 
-                           onChange={handleComment}/>
+                    label="Comment"
+                    multiline
+                    variant="outlined"
+                    value={data.comment}
+                    onChange={handleComment} />
                 {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
 
             </div>
