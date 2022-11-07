@@ -1,8 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RatingCard from './RatingCard.jsx'
-import NewRatingCard from './NewRatingCard.jsx';
-import "./CardGrid.css"
-import RatingCardFriend from './RatingCardFriend.jsx';
 import { useDbData, useDbUpdate } from '../utilities/firebase';
 
 const SubscribeButton = ({data, user, pageID}) => {
