@@ -27,12 +27,10 @@ const CardGrid = ({ data, user, id: pageID }) => {
         {user ? <SubscribeButton data={data} user={user} pageID={pageID} /> : <div/>}
       </div>
 
-      {listOfRatingData && <div>
-        <div className="card-grid">
-          {listOfRatingData.map((songData, i) =>
+      <div className="card-grid">
+        {listOfRatingData && listOfRatingData.map((songData, i) =>
             <RatingCardFriend data={songData} id={pageID} index={i} key={i} />)}
-        </div>
-      </div>}
+      </div>
     </div>
 };
 
