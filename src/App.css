@@ -144,3 +144,10 @@ button {
 .friend-profile-header .text {
   margin-bottom: 0px;
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 18rem);
+  grid-gap: 2rem;
+  justify-content: center;
+}

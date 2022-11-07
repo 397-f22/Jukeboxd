@@ -35,5 +35,3 @@ const CardGrid = ({ data, user, id, recentSong, setRecentSong }) => {
       </div>
     </div>
 };
-
-export default CardGrid;
