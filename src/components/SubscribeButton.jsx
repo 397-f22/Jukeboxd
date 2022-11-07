@@ -33,8 +33,8 @@ const SubscribeButton = ({data, user, pageID}) => {
 
     return <div>
         {isSubscribedTo 
-            ? <button className="btn btn-danger" onClick={unsubscribeToProfile}>Unsubscribe</button>
-            : <button className="btn btn-success" onClick={subscribeToProfile}>Subscribe</button>}
+            ? <button className="btn btn-danger btn-lg" onClick={unsubscribeToProfile}>Unsubscribe</button>
+            : <button className="btn btn-success btn-lg" onClick={subscribeToProfile}>Subscribe</button>}
     </div>
 }
 
