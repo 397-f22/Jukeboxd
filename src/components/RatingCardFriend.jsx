@@ -16,7 +16,7 @@ const RatingCardFriend = ({ id, songData, user, index, data }) => {
                 <Rating initialValue={songData.stars} style={{ marginBottom: "20px" }} readonly/>
                 {songData.comment && <div className="friend-comment">{songData.comment}</div>}
                 {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-                {data && <LikeButton pageID={id} user={user} data={data} reviewIndex={index}/>}
+                {data && <LikeButton pageID={id} user={user} data={data} review={songData}/>}
             </div>
         </div>
     )

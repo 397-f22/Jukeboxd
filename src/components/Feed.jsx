@@ -3,9 +3,8 @@ import CardFeed from "./CardFeed";
 // takes: arr
 const getReviewsFromSubscriptions = (subscriptions, data) => {
     if (subscriptions == "" || subscriptions == undefined) {
-        return 0;
+        return [];
     }
-
 
     return subscriptions.map(id => {
         console.log(data[id])
@@ -14,10 +13,10 @@ const getReviewsFromSubscriptions = (subscriptions, data) => {
 
 }
 
-const reorderReviews = (subscriptions) => {
-    return subscriptions.sort((a, b) => b.date - a.date);
-
+const reorderReviews = (reviews) => {
+    return reviews.sort((a, b) => b.date - a.date);
 }
+
 const Feed = ({ user, data }) => {
     // get list of subscriptions
     if (!data || (user && !data[user.id]) || !user) {

@@ -18,7 +18,7 @@ const CardFeed = ({ review, user, data, index }) => {
                 <Rating initialValue={review.stars} style={{ marginBottom: "20px" }} readonly />
                 {review.comment && <div className="friend-comment">{review.comment}</div>}
                 {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-
+                {data && <LikeButton pageID={id} user={user} data={data} review={review}/>}
             </div>
         </div>
     )
