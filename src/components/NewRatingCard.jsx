@@ -8,7 +8,13 @@ import Modal from './Modal';
 const NewRatingCard = ({data, id, newRatingId}) => {
     const [open, setOpen] = useState(false);
     const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
+    const [songData, setSongData] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const closeModal = () => {
+        setOpen(false);
+        setSongData([]);
+        setSearchTerm('');
+    };
 
     return (
         <div>
@@ -16,7 +22,9 @@ const NewRatingCard = ({data, id, newRatingId}) => {
                 <h1>+</h1>
             </div>
             <Modal open={open} close={closeModal}>
-                <Searchbox id={id} newRatingId={newRatingId} data={data} close={closeModal}/>
+                <Searchbox id={id} newRatingId={newRatingId} data={data} close={closeModal}
+                           songData={songData} setSongData={setSongData}
+                           searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             </Modal>
         </div>
     )

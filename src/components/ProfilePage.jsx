@@ -17,16 +17,18 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
     }
 
     const listOfRatingData = data[pageID].reviews;
-    console.log(recentSongs);
+    console.log(listOfRatingData);
     
-    return <div className="container" style={{ marginTop: "2rem", }}>
+    return <div className="container" style={{ marginTop: "2rem" }}>
         {pageID === user.id ? 
             // if it's your page
             <div>
-                <div className="card-grid">
+                <h1 style={{ marginBottom: "2rem" }}>Recently listened to</h1>
+                <div className="card-grid" style={{ marginBottom: "2rem" }}>
                     {recentSongs && recentSongs.map((song, i) =>
-                        <ReviewNext user={user} data={song} id={pageID} key = {i}/> )}
+                        <ReviewNext user={user} songData={song} listOfRatingData={listOfRatingData} id={pageID} key={i}/> )}
                 </div>
+                <h1 style={{ marginBottom: "2rem" }}>Your reviews</h1>
                 <div className="card-grid">
                     <NewRatingCard data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
 

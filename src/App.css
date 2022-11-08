@@ -106,12 +106,21 @@ button {
 }
 
 .searchbox-container .search-box{
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
 
 .searchbox-container .search-box .input{
-  width: 80%
+  flex: 5;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: solid;
+  border-width: 2px;
+}
+
+.searchbox-container .search-box .search-button{
+  flex: 2;
 }
 
 .search-button {

@@ -1,57 +1,33 @@
 import React, { useState } from 'react'
-import { Rating } from 'react-simple-star-rating';
-import { TextField } from "@mui/material";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './RatingCard.css';
 import { useDbUpdate } from '../utilities/firebase';
+import { writeSongToDb } from '../utilities/writeSongToDb';
 
-const ReviewNext = ({ id, data, index }) => {
-    console.log(data);
-    const [rating, setRating] = useState(data.stars);
-    const [comment, setComment] = useState(data.comment);
-    const [update, result] = useDbUpdate(`/${id}/reviews/${index}`);
-    const handleRating = (rating) => {
-        // update({
-        //     "stars": rating,
-        //     "date": Date.now()
-        // });
-        setRating(rating);
+const ReviewNext = ({ id, songData, index, user, listOfRatingData }) => {
+    const [update, result] = useDbUpdate(`/${id}`);
+
+    const addReview = () => {
+        writeSongToDb(listOfRatingData, update, {
+            "name": songData.name,
+            "artist": {"name": songData.artists[0].name},
+            "album": {"image_url": songData.album.images[0].url}
+        });
     }
-
-
-    const handleComment = (event) => {
-        // update({
-        //     "comment": event.target.value,
-        //     "date": Date.now()
-        // });
-        setComment(event.target.value);
-    }
-
 
     return (
         <div>
-            {data ? <div className="song-card">
-                <h1>Review Next?</h1>
+            {songData ? <div className="song-card">
                 <div className="img-container">
-                    <img src={data.album.images[0].url} className="card-img-top" />
+                    <img src={songData.album.images[0].url} className="card-img-top" />
                 </div>
                 <div className="card-body">
-
-                    <h5 className="card-title">{data.name}</h5>
-                    <h6 className="card-text">{data.artists[0].name}</h6>
-                    <Rating initialValue={rating} onClick={handleRating} style={{ marginBottom: "20px" }} />
-                    <TextField className="comment"
-                        label="Comment"
-                        multiline
-                        variant="outlined"
-                        value={data.comment}
-                        onChange={handleComment} />
-                    {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-
+                    <h5 className="card-title">{songData.name}</h5>
+                    <h6 className="card-text">{songData.artists[0].name}</h6>
+                    <button className="btn btn-outline-secondary" onClick={addReview}>Add Review</button>
                 </div>
             </div>: <div className="song-card"></div>}
         </div>
-        
-        
     )
 };
 

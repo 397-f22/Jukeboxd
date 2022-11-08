@@ -1,46 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { useDbData, useDbUpdate } from '../utilities/firebase';
+import { writeSongToDb } from '../utilities/writeSongToDb';
 
-const Searchbox = ({data, id, newRatingId, close}) => {
-    const [searchTerm, setSearchTerm] = useState('');
+const Searchbox = ({data, id, newRatingId, close, songData, setSongData, searchTerm, setSearchTerm}) => {
+    
     const [selectedSong, setSelectedSong] = useState(undefined);
-    const [songData, setSongData] = useState([]);
+    
     const [update, result] = useDbUpdate(`/${id}`);
 
     const updateSearchTerm = (event) => {
         setSearchTerm(event.target.value);
     }
 
-    const writeSongToDb = () => {
+    const createReview = () => {
         console.log(selectedSong)
-        // if db has no entries
-        if (data === null) {
-            update(
-                {reviews: [{
-                    "songName": selectedSong.name,
-                    "artist": selectedSong.artist.name,
-                    "albumCover": selectedSong.album.image_url,
-                    "stars": 0,
-                    "comment": "",
-                    "date": Date.now(),
-                    "likes": ""
-                }]}
-            );
-        }
-        else {
-            update(
-                {reviews: [{
-                    "songName": selectedSong.name,
-                    "artist": selectedSong.artist.name,
-                    "albumCover": selectedSong.album.image_url,
-                    "stars": 0,
-                    "comment": "",
-                    "date": Date.now(),
-                    "likes": ""
-                }, ...data]}
-            );
-        }
+        writeSongToDb(data, update, selectedSong);
         close();
     };
 
@@ -67,24 +42,22 @@ const Searchbox = ({data, id, newRatingId, close}) => {
       }, []);
 
     return (
-        <div className="searchbox-container">
-            <div style={{display: "flex", flexDirection: "row"}}>
-                <input type="text" placeholder="Song Name" value={searchTerm} onChange={updateSearchTerm} className="input"></input>
-                <button className='search-button' onClick={() => {
-                    search();
-                }}>Search</button>
+        <div className='searchbox-container'>
+            <div className='search-box' style={{marginBottom: "10px"}}>
+                <input className='input' type='text' placeholder='Song Name' value={searchTerm} onChange={updateSearchTerm}></input>
+                <button className='search-button' onClick={search}>Search</button>
             </div>
-            {songData.length > 0 && <div className="search-song">
+            {songData.length > 0 && <div className='search-song'>
                 {songData.slice(0, 4).map((song, i) => {
-                    return <div className={song === selectedSong ? "selected" : "unselected"} onClick={() => setSelectedSong(song)} key={i}>
-                        <img src={song.album.image_url} className="album-cover" />
-                        <div className="info">
+                    return <div className={song === selectedSong ? 'selected' : 'unselected'} onClick={() => setSelectedSong(song)} key={i}>
+                        <img src={song.album.image_url} className='album-cover' />
+                        <div className='info'>
                             <div>{song.name}</div>
                             <div>{song.artist.name}</div>
                         </div>
                     </div>
                 })}
-                <button className='search-button' onClick={writeSongToDb}>
+                <button className='search-button' onClick={createReview} style={{marginTop: "10px"}}>
                     Create Review
                 </button>
             </div>}
