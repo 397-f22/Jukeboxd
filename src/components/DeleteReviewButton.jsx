@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useDbData, useDbUpdate, useDbRemove } from '../utilities/firebase';
+import { useDbData, useDbUpdate } from '../utilities/firebase';
 import { Button } from "@mui/material";
 
 const DeleteReviewButton = ({id, index, reviewList}) => {
