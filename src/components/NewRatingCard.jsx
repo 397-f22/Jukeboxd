@@ -5,7 +5,7 @@ import './RatingCard.css';
 import Searchbox from './Searchbox';
 import Modal from './Modal';
 
-const NewRatingCard = ({data, id, newRatingId}) => {
+const NewRatingCard = ({data, id, newRatingId, user}) => {
     const [open, setOpen] = useState(false);
     const openModal = () => setOpen(true);
     const [songData, setSongData] = useState([]);
@@ -22,7 +22,7 @@ const NewRatingCard = ({data, id, newRatingId}) => {
                 <h1>+</h1>
             </div>
             <Modal open={open} close={closeModal}>
-                <Searchbox id={id} newRatingId={newRatingId} data={data} close={closeModal}
+                <Searchbox user = {user} id={id} newRatingId={newRatingId} data={data} close={closeModal}
                            songData={songData} setSongData={setSongData}
                            searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             </Modal>

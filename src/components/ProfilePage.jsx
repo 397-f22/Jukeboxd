@@ -32,7 +32,7 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
                 </div>
                 <h1 style={{ marginBottom: "2rem" }}>Your reviews</h1>
                 <div className="card-grid">
-                    <NewRatingCard data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
+                    <NewRatingCard user = {user} data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
 
                     {listOfRatingData && listOfRatingData.map((songData, i) =>
                         <RatingCard data={songData} id={pageID} index={i} key={i} reviewList={listOfRatingData} />)}

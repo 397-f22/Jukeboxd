@@ -1,4 +1,6 @@
-export const writeSongToDb = (data, update, song) => {
+import { useRadioGroup } from "@mui/material";
+
+export const writeSongToDb = (data, update, song, user) => {
     // if db has no entries
     if (data === null) {
         update(
@@ -9,7 +11,8 @@ export const writeSongToDb = (data, update, song) => {
                 "stars": 0,
                 "comment": "",
                 "date": Date.now(),
-                "likes": ""
+                "likes": "", 
+                "author": user.id
             }]}
         );
     }
@@ -22,7 +25,8 @@ export const writeSongToDb = (data, update, song) => {
                 "stars": 0,
                 "comment": "",
                 "date": Date.now(),
-                "likes": ""
+                "likes": "", 
+                "author": user.id
             }, ...data]}
         );
     }

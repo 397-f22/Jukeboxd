@@ -12,7 +12,7 @@ const ReviewNext = ({ id, songData, index, user, listOfRatingData }) => {
             "name": songData.name,
             "artist": {"name": songData.artists[0].name},
             "album": {"image_url": songData.album.images[0].url}
-        });
+        }, user);
     }
 
     return (

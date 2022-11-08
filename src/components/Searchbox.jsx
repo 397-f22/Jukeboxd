@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDbData, useDbUpdate } from '../utilities/firebase';
 import { writeSongToDb } from '../utilities/writeSongToDb';
 
-const Searchbox = ({data, id, newRatingId, close, songData, setSongData, searchTerm, setSearchTerm}) => {
+const Searchbox = ({data, id, newRatingId, close, songData, setSongData, searchTerm, setSearchTerm, user}) => {
     
     const [selectedSong, setSelectedSong] = useState(undefined);
     
@@ -15,7 +15,7 @@ const Searchbox = ({data, id, newRatingId, close, songData, setSongData, searchT
 
     const createReview = () => {
         console.log(selectedSong)
-        writeSongToDb(data, update, selectedSong);
+        writeSongToDb(data, update, selectedSong, user);
         close();
     };
 
