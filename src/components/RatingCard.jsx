@@ -3,8 +3,9 @@ import { Rating } from 'react-simple-star-rating'
 import { TextField } from "@mui/material";
 import './RatingCard.css';
 import { useDbUpdate } from '../utilities/firebase';
+import DeleteReviewButton from "./DeleteReviewButton.jsx";
 
-const RatingCard = ({id, data, index}) => {
+const RatingCard = ({id, data, index, reviewList}) => {
     const [rating, setRating] = useState(data.stars);
     const [comment, setComment] = useState(data.comment);
     const [update, result] = useDbUpdate(`/${id}/reviews/${index}`);
@@ -43,7 +44,7 @@ const RatingCard = ({id, data, index}) => {
                            value={data.comment} 
                            onChange={handleComment}/>
                 {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-
+                <DeleteReviewButton id={id} index={index} reviewList={reviewList} />
             </div>
         </div>
     )

@@ -16,8 +16,10 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
         return <h1>Data is loading...</h1>;
     }
 
-    const listOfRatingData = data[pageID].reviews;
-    console.log(listOfRatingData);
+    var listOfRatingData = data[pageID].reviews;
+    if(!listOfRatingData){
+        listOfRatingData = "";
+    }
     
     return <div className="container" style={{ marginTop: "2rem" }}>
         {pageID === user.id ? 
@@ -33,7 +35,7 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
                     <NewRatingCard data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
 
                     {listOfRatingData && listOfRatingData.map((songData, i) =>
-                        <RatingCard data={songData} id={pageID} index={i} key={i} />)}
+                        <RatingCard data={songData} id={pageID} index={i} key={i} reviewList={listOfRatingData} />)}
                 </div>
             </div> : 
 
