@@ -7,7 +7,7 @@ import Homepage from './components/Homepage.jsx';
 import ProfilePage from './components/ProfilePage.jsx';
 import NavigationBar from './components/NavigationBar.jsx';
 import { useDbData } from './utilities/firebase';
-import ReviewNext from './components/ReviewNext';
+import FriendPage from './components/FriendPage';
 
 const ProfileForUrl = ({ user, data, recentSongs, setRecentSongs }) => {
   const { id } = useParams();
@@ -43,6 +43,11 @@ const App = () => {
           <Route path="/profile/:id" element={
             <div>
               <ProfileForUrl user={user} data={data} recentSongs={recentSongs} setRecentSongs={setRecentSongs} />
+            </div>
+          } />
+          <Route path="/friends" element={
+            <div>
+              <FriendPage data={data} user={user}/> 
             </div>
           } />
         </Routes>

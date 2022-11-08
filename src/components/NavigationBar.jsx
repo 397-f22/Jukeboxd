@@ -4,18 +4,13 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import GroupIcon from '@mui/icons-material/Group';
 import Paper from '@mui/material/Paper';
-
+import HomeIcon from '@mui/icons-material/Home';
 
 const NavigationBar = ({user}) => {
 
     var [value, setValue] = useState(window.location.pathname);
 
     const goToProfile = () => {
-        // console.log("here")
-        // console.log(user.id)
-        // console.log("^^")
-        
-
         window.location.href = `/profile/${user.id}`; 
     }
 
@@ -32,6 +27,7 @@ const NavigationBar = ({user}) => {
             onChange={clickNavBar}
             >
                 <BottomNavigationAction label="Friends" icon={<GroupIcon />} value="/friends" />
+                <BottomNavigationAction label="home" icon={<HomeIcon />} value="/" />
                 <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} onClick={goToProfile}/>
             </BottomNavigation>
         </Paper>

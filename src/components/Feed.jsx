@@ -30,7 +30,7 @@ const Feed = ({ user, data }) => {
 
     //return the subscriptions
     return <div>
-        <div className="card-grid" style={{ marginBottom: "2rem" }}>
+        <div className="card-grid" style={{ marginBottom: "2rem", marginTop: "2rem" }}>
             {reviewsToDisplay && reviewsToDisplay.map((review, i) =>
                 <CardFeed user={user} review={review} key={i} data={data} index={i} />)}
         </div>
