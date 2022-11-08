@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import Feed from './Feed.jsx'
 
-const Homepage = () => {
+const Homepage = ({data, user}) => {
     return( 
         <div className="container">
-            homepage
+            <Feed data={data} user={user}/>
         </div>  
     );
 }
