@@ -3,6 +3,7 @@ import { Rating } from 'react-simple-star-rating'
 import { TextField } from "@mui/material";
 import './RatingCard.css';
 import LikeButton from './LikeButton';
+import { formatDateDifference } from '../utilities/formatDate';
 
 const CardFeed = ({ review, user, data, index }) => {
     if (!data || !data[review.author]) {
@@ -12,7 +13,8 @@ const CardFeed = ({ review, user, data, index }) => {
     const id = review.author;
     return (
         <div className="song-card">
-            <h3>{data[review.author].displayName}</h3>
+            <h4>{data[review.author].displayName}</h4>
+            <h5>{formatDateDifference(Date.now(), review.date)}</h5>
             <div className="img-container">
                 <img src={review.albumCover} className="card-img-top" />
             </div>

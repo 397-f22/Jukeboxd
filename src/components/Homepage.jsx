@@ -9,7 +9,8 @@ const Homepage = ({data, user}) => {
 
     return( 
         <div className="container">
-           <Feed data={data} user={user} subscriptionIDs={Object.keys(data)}/>
+            <h2 style={{marginTop: "2rem"}}>Recent reviews</h2>
+            <Feed data={data} user={user} subscriptionIDs={Object.keys(data)}/>
         </div>  
     );
 }

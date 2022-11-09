@@ -29,12 +29,12 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
         {pageID === user.id ? 
             // if it's your page
             <div>
-                <h1 style={{ marginBottom: "2rem" }}>Recently listened to</h1>
+                <h2 style={{ marginBottom: "2rem" }}>Recently listened to</h2>
                 <div className="card-grid" style={{ marginBottom: "2rem" }}>
                     {recentSongs && recentSongs.map((song, i) =>
                         <ReviewNext user={user} songData={song} listOfRatingData={listOfRatingData} id={pageID} key={i}/> )}
                 </div>
-                <h1 style={{ marginBottom: "2rem" }}>Your reviews</h1>
+                <h2 style={{ marginBottom: "2rem" }}>Your reviews</h2>
                 <div className="card-grid">
                     <NewRatingCard user = {user} data={listOfRatingData} id={pageID} newRatingId={listOfRatingData.length}/>
 
@@ -46,7 +46,7 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
             // viewing someone else's page
             <div>
                 <div className="friend-profile-header">
-                    <h1 className="text">{`${data[pageID].displayName}'s Profile`}</h1>
+                    <h2 className="text">{`${data[pageID].displayName}'s Profile`}</h2>
                     {/* switch between subscribe and unsub buttons, based on whether subscribed */}
                     {user ? <SubscribeButton data={data} user={user} pageID={pageID} /> : <div/>}
                 </div>
