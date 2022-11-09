@@ -8,7 +8,7 @@ const getIdFromDisplayName = (data, displayName) => {
     return Object.keys(data).map(id => data[id]).filter(person => person.displayName === displayName)[0];
 };
 
-export const getBestSearchMatch = (data, searchTerm) => {
+export const searchProfiles = (data, searchTerm) => {
     const matches = stringSimilarity.findBestMatch(searchTerm, getDisplayNames(data)).ratings;
     return matches.sort((a, b) => b.rating-a.rating).map((rating) => getIdFromDisplayName(data, rating.target));
 };

@@ -1,5 +1,5 @@
 import './App.css';
-import Searchbox from './components/Searchbox.jsx'
+import SearchSongsPopup from './components/SearchSongsPopup.jsx'
 import { loginUrl, getTokenFromUrl } from './utilities/SpotifyLogin.jsx'
 import SpotifyWebApi from "spotify-web-api-js";
 import { useState, useEffect } from "react";
@@ -8,12 +8,34 @@ import { Fab } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDbData, useDbUpdate } from './utilities/firebase.js';
+import Modal from './components/Modal';
+import { searchProfiles } from './utilities/searchProfiles.js'
+import ProfileSearchResults from './components/ProfileSearchResults'
 
 const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
     const spotify = new SpotifyWebApi();
     const [spotifyToken, setSpotifyToken] = useState("");
     //check if needs login aggain because every token expires in one hour;
     const [spotifyAuth, setSpotifyAuth] = useState(false);
+    
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState();
+    const [open, setOpen] = useState(false);
+    const openModal = () => setOpen(true);
+    const closeModal = () => {
+        setOpen(false);
+        setSearchTerm('');
+    };
+    
+    const updateSearchTerm = (event) => {
+        setSearchTerm(event.target.value);
+    }
+
+    const search = () => {
+        const profiles = searchProfiles(data, searchTerm);
+        setSearchResults(profiles);
+        openModal();
+    }
 
     const backToHomepage = () => {
         window.location.href = "/";
@@ -57,7 +79,7 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
         if (!user && spotifyAuth) {
             spotify.setAccessToken(spotifyToken)
             spotify.getMe().then((user) => {
-                console.log("DIS YOU: ", user)
+                //console.log("DIS YOU: ", user)
                 setUser(user);
 
             }).catch((err) => {
@@ -71,22 +93,32 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
             spotify.getMyRecentlyPlayedTracks().then((data) => {
                 recentSongs = data.items.map(song => song.track).slice(0, 4);
                 setRecentSongs(recentSongs);
-                console.log(recentSongs);
-                console.log("RECENTLY PLAYED: ", data);
+                //console.log(recentSongs);
+                //console.log("RECENTLY PLAYED: ", data);
             })
         }
     })
 
     return <div className="App-header">
-        <div className='logo' onClick={backToHomepage}>
+        <div className='logo' onClick={backToHomepage} style={{flex: 1}}>
             <img src="https://i.imgur.com/yi37i4n.png"
                 style={{ width: "50px", marginRight: "10px", cursor: "pointer" }}
                 onClick={backToHomepage} />
             <h1 className="title">Jukeboxd</h1>
         </div>
 
+        <div className='searchbox-container' style={{flex: 1}}>
+            <div className='header-search-box'>
+                <input className='text-field' type='text' placeholder='Find Friends' value={searchTerm} onChange={updateSearchTerm} style={{flex: 4}}/>
+                <button className='search-button' onClick={search} style={{flex: 1}}>Search</button>
+            </div>
 
-        <div className='searchbox-container'>
+            <Modal open={open} close={closeModal}>
+                <ProfileSearchResults results={searchResults}/>
+            </Modal>
+        </div>
+
+        <div className='searchbox-container' style={{flex: 1}}>
             {/* <Searchbox/> */}
             {spotifyAuth ?
                 <div className="authBtn">
@@ -105,7 +137,6 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
                     </Fab>
                 </div>
             }
-
         </div>
 
     </div>

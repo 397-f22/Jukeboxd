@@ -44,7 +44,7 @@ const RatingCard = ({id, data, index, reviewList}) => {
                            value={data.comment} 
                            onChange={handleComment}/>
                 {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-                <DeleteReviewButton id={id} index={index} reviewList={reviewList} />
+                <DeleteReviewButton id={id} review={data} reviewList={reviewList} />
             </div>
         </div>
     )

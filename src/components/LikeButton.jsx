@@ -3,7 +3,7 @@ import { useDbData, useDbUpdate } from '../utilities/firebase';
 
 const LikeButton = ({user, pageID, review, data}) => {
     const reviewIndex = data[pageID].reviews.findIndex((element) => element.date === review.date)
-    console.log("reviewIndex", reviewIndex)
+    //console.log("reviewIndex", reviewIndex)
 
     const [update, result] = useDbUpdate(`/${pageID}/reviews/${reviewIndex}`);
     

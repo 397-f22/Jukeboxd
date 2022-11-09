@@ -5,6 +5,10 @@ import './RatingCard.css';
 import LikeButton from './LikeButton';
 
 const CardFeed = ({ review, user, data, index }) => {
+    if (!data || !data[review.author]) {
+       return <div/>;
+    }
+
     const id = review.author;
     return (
         <div className="song-card">
