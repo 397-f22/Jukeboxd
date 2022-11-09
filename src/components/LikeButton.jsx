@@ -1,5 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDbData, useDbUpdate } from '../utilities/firebase';
+import { Button, IconButton } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const LikeButton = ({user, pageID, review, data}) => {
     const reviewIndex = data[pageID].reviews.findIndex((element) => element.date === review.date)
@@ -34,8 +37,13 @@ const LikeButton = ({user, pageID, review, data}) => {
 
     const isLiking = user ? data[pageID].reviews[reviewIndex].likes.includes(user.id) : false;  
 
-    return isLiking ? <button className="btn btn-danger btn-sm" onClick={unlikeReview}>Unlike</button> : 
-                      <button className="btn btn-success btn-sm" onClick={likeReview}>Like</button>
+    return isLiking ? 
+      <IconButton onClick={unlikeReview} color={"error"}>
+        <FavoriteIcon />
+      </IconButton> : 
+      <IconButton onClick={likeReview}>
+        <FavoriteBorderIcon />
+      </IconButton>
 }
 
 export default LikeButton;

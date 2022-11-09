@@ -33,7 +33,6 @@ const RatingCard = ({id, data, index, reviewList}) => {
                 <img src={data.albumCover} className="card-img-top"/>
             </div>
             <div className="card-body">
-
                 <h5 className="card-title">{data.songName}</h5>
                 <h6 className="card-text">{data.artist}</h6>
                 <Rating initialValue={rating} onClick={handleRating} style={{marginBottom: "20px"}}/>
@@ -43,9 +42,8 @@ const RatingCard = ({id, data, index, reviewList}) => {
                            variant="outlined" 
                            value={data.comment} 
                            onChange={handleComment}/>
-                {/* <input type="text" className="comment" value={data.comment} onChange={handleComment} /> */}
-                <DeleteReviewButton id={id} review={data} reviewList={reviewList} />
             </div>
+            <DeleteReviewButton id={id} review={data} reviewList={reviewList} />
         </div>
     )
 };
