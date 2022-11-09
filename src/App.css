@@ -36,6 +36,10 @@
   margin-left: auto;
 }
 
+.container{
+  margin-bottom: 70px;
+}
+
 .App-header .title {
   font-size: 30px;
 }
@@ -188,4 +192,8 @@ button {
 
 .profile-search-results .profile {
   color: black;
+}
+
+#searchbox-friend{
+  color: lightgreen;
 }

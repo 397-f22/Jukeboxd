@@ -4,13 +4,14 @@ import { loginUrl, getTokenFromUrl } from './utilities/SpotifyLogin.jsx'
 import SpotifyWebApi from "spotify-web-api-js";
 import { useState, useEffect } from "react";
 import { WindowRounded } from '@mui/icons-material';
-import { Fab } from "@mui/material";
+import { Fab, TextField } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDbData, useDbUpdate } from './utilities/firebase.js';
 import Modal from './components/Modal';
 import { searchProfiles } from './utilities/searchProfiles.js'
 import ProfileSearchResults from './components/ProfileSearchResults'
+import SearchIcon from '@mui/icons-material/Search';
 
 const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
     const spotify = new SpotifyWebApi();
@@ -109,8 +110,26 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
 
         <div className='searchbox-container' style={{flex: 1}}>
             <div className='header-search-box'>
-                <input className='text-field' type='text' placeholder='Find Friends' value={searchTerm} onChange={updateSearchTerm} style={{flex: 4}}/>
-                <button className='search-button' onClick={search} style={{flex: 1}}>Search</button>
+                <TextField
+                    hiddenLabel
+                    id="searchbox-friend"
+                    placeholder="Find Friends"
+                    value={searchTerm}
+                    variant="filled"
+                    size="small"
+                    color="success"
+                    fullWidth
+                    onChange={updateSearchTerm}
+                />
+                <Fab color="success"
+                     aria-label="search" 
+                     onClick={search} 
+                     size="small"
+                     style={{ marginLeft: "10px" }}>
+                    <SearchIcon />
+                </Fab>
+                {/* <input className='text-field' type='text' placeholder='Find Friends' value={searchTerm} onChange={updateSearchTerm} style={{flex: 4}}/> */}
+                {/* <button className='search-button' onClick={search} style={{flex: 1}}>Search</button> */}
             </div>
 
             <Modal open={open} close={closeModal}>

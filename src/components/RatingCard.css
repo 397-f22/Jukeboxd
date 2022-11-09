@@ -57,6 +57,7 @@
   border: solid;
   border-width: 1px;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .card-body .card-title {

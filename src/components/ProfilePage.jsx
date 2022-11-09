@@ -12,6 +12,10 @@ import ReviewNext from './ReviewNext.jsx';
 const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
     // if data (all db data), data[pageID] (data of person's page we're visiting), or data[user.id] 
     // (our data if we're logged in) are undefined then return a message our data is loading
+    if(!user){
+        return <h1>Please Login first</h1>;
+    }
+
     if (!data || (!data[pageID] || (user && !data[user.id]))) {
         return <h1>Data is loading...</h1>;
     }
@@ -52,7 +56,6 @@ const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
                         <RatingCardFriend user={user} songData={songData} id={pageID} index={i} key={i} data={data}/>)}
                 </div>
             </div>}
-        <div style={{ height: "100px" }} />
     </div>
 }
 

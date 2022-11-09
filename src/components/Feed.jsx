@@ -13,11 +13,20 @@ const getReviewsFromSubscriptions = (subscriptions, data) => {
 }
 
 const reorderReviews = (reviews) => {
+
+    reviews = reviews.filter(function (el) {
+        return el != '';
+    });
+    
     return reviews.sort((a, b) => b.date - a.date);
 }
 
 const Feed = ({ user, data }) => {
-    if (!data || (user && !data[user.id]) || !user) {
+    if(!user){
+        return <h1>Please Login first</h1>;
+    }
+
+    if (!data || (user && !data[user.id])) {
         return <h1>Data is loading...</h1>;
     }
 
