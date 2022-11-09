@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header user={user} setUser={setUser} recentSongs={recentSongs} setRecentSongs={setRecentSongs} />
+      <Header user={user} setUser={setUser} recentSongs={recentSongs} setRecentSongs={setRecentSongs} data={data}/>
 
       <BrowserRouter>
         <Routes>

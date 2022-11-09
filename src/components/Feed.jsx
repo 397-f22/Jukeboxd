@@ -7,7 +7,6 @@ const getReviewsFromSubscriptions = (subscriptions, data) => {
     }
 
     return subscriptions.map(id => {
-        console.log(data[id])
         return data[id].reviews
     }).flat();
 
@@ -18,15 +17,15 @@ const reorderReviews = (reviews) => {
 }
 
 const Feed = ({ user, data }) => {
-    // get list of subscriptions
     if (!data || (user && !data[user.id]) || !user) {
         return <h1>Data is loading...</h1>;
     }
-    const subscriptions = getReviewsFromSubscriptions(data[user.id].subscriptions, data); //array of id strings OR ""
-    const reviewsToDisplay = reorderReviews(subscriptions)
-    console.log(reviewsToDisplay)
-    // then display reviews in that order
 
+    // get list of subscriptions
+    const subscriptions = getReviewsFromSubscriptions(data[user.id].subscriptions, data); //array of id strings OR ""
+    // then display reviews in that order
+    const reviewsToDisplay = reorderReviews(subscriptions)
+    
 
     //return the subscriptions
     return <div>

@@ -2,15 +2,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDbData, useDbUpdate } from '../utilities/firebase';
 import { Button } from "@mui/material";
 
-const DeleteReviewButton = ({id, index, reviewList}) => {
+const DeleteReviewButton = ({id, reviewList, review}) => {
     const [update, result] = useDbUpdate(`/${id}/`);
 
     const removeReview = () => {
-        reviewList.splice(index, 1);
-
+        const newReviewsList = reviewList.filter((element) => element !== review);
+        //console.log(reviewList, newReviewsList)
         update(
-            {reviews: reviewList}
-        );
+            {"reviews": newReviewsList.length > 0 ? newReviewsList : ""}
+        );  
     }
 
     return <div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import { TextField } from "@mui/material";
 import './RatingCard.css';
-import Searchbox from './Searchbox';
+import SearchSongsPopup from './SearchSongsPopup';
 import Modal from './Modal';
 
 const NewRatingCard = ({data, id, newRatingId, user}) => {
@@ -22,7 +22,7 @@ const NewRatingCard = ({data, id, newRatingId, user}) => {
                 <h1>+</h1>
             </div>
             <Modal open={open} close={closeModal}>
-                <Searchbox user = {user} id={id} newRatingId={newRatingId} data={data} close={closeModal}
+                <SearchSongsPopup user = {user} id={id} newRatingId={newRatingId} data={data} close={closeModal}
                            songData={songData} setSongData={setSongData}
                            searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             </Modal>
