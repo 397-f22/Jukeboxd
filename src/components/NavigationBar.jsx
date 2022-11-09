@@ -27,7 +27,7 @@ const NavigationBar = ({user}) => {
             onChange={clickNavBar}
             >
                 <BottomNavigationAction label="Friends" icon={<GroupIcon />} value="/friends" />
-                <BottomNavigationAction label="home" icon={<HomeIcon />} value="/" />
+                <BottomNavigationAction label="Home" icon={<HomeIcon />} value="/" />
                 <BottomNavigationAction label="Profile" icon={<AccountCircleIcon />} onClick={goToProfile}/>
             </BottomNavigation>
         </Paper>
