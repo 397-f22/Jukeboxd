@@ -12,7 +12,7 @@ import ReviewNext from './ReviewNext.jsx';
 const ProfilePage = ({id: pageID, user, data, recentSongs}) => {
     // if data (all db data), data[pageID] (data of person's page we're visiting), or data[user.id] 
     // (our data if we're logged in) are undefined then return a message our data is loading
-    if(!user){
+    if(!user && pageID==="undefined"){
         return <h1>Please Login first</h1>;
     }
 

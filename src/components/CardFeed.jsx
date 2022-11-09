@@ -13,18 +13,20 @@ const CardFeed = ({ review, user, data, index }) => {
     const id = review.author;
     return (
         <div className="song-card">
-            <h4>{data[review.author].displayName}</h4>
-            <h5>{formatDateDifference(Date.now(), review.date)}</h5>
-            <div className="img-container">
-                <img src={review.albumCover} className="card-img-top" />
+            <div>
+                <h4>{data[review.author].displayName}</h4>
+                <h5>{formatDateDifference(Date.now(), review.date)}</h5>
+                <div className="img-container">
+                    <img src={review.albumCover} className="card-img-top" />
+                </div>
+                <div className="card-body">
+                    <h5 className="card-title">{review.songName}</h5>
+                    <h6 className="card-text">{review.artist}</h6>
+                    <Rating initialValue={review.stars} style={{ marginBottom: "20px" }} readonly />
+                    {review.comment && <div className="friend-comment">{review.comment}</div>}
+                </div>
             </div>
-            <div className="card-body">
-                <h5 className="card-title">{review.songName}</h5>
-                <h6 className="card-text">{review.artist}</h6>
-                <Rating initialValue={review.stars} style={{ marginBottom: "20px" }} readonly />
-                {review.comment && <div className="friend-comment">{review.comment}</div>}
-            </div>
-            {(data && user) ? <LikeButton pageID={id} user={user} data={data} review={review}/> : <div/>}
+            {(data && user) ? <LikeButton pageID={id} user={user} data={data} review={review} style={{alignSelf: "flex-end"}}/> : <div/>}
         </div>
     )
 };

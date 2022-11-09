@@ -14,7 +14,7 @@ const DeleteReviewButton = ({id, reviewList, review}) => {
         );  
     }
 
-    return <IconButton onClick={removeReview} style={{ marginTop: "5px" }}>
+    return <IconButton onClick={removeReview} style={{marginTop: "5px", width: "fit-content", alignSelf: "center"}}>
         <DeleteIcon />
     </IconButton>
     // <Button   variant="contained" color="error">Remove</Button>

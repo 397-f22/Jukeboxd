@@ -37,6 +37,9 @@
   width: 18rem;
   height: 100%;
   background-color: rgb(235, 235, 235);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-body {
@@ -57,7 +60,6 @@
   border: solid;
   border-width: 1px;
   padding: 10px;
-  margin-bottom: 10px;
 }
 
 .card-body .card-title {

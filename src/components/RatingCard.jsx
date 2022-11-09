@@ -29,21 +29,23 @@ const RatingCard = ({id, data, index, reviewList}) => {
     
     return (
         <div className="song-card">
-            <div className="img-container">
-                <img src={data.albumCover} className="card-img-top"/>
+            <div>
+                <div className="img-container">
+                    <img src={data.albumCover} className="card-img-top"/>
+                </div>
+                <div className="card-body">
+                    <h5 className="card-title">{data.songName}</h5>
+                    <h6 className="card-text">{data.artist}</h6>
+                    <Rating initialValue={rating} onClick={handleRating} style={{marginBottom: "20px"}}/>
+                    <TextField className="comment"
+                            label="Comment"
+                            multiline 
+                            variant="outlined" 
+                            value={data.comment} 
+                            onChange={handleComment}/>
+                </div>
             </div>
-            <div className="card-body">
-                <h5 className="card-title">{data.songName}</h5>
-                <h6 className="card-text">{data.artist}</h6>
-                <Rating initialValue={rating} onClick={handleRating} style={{marginBottom: "20px"}}/>
-                <TextField className="comment"
-                           label="Comment"
-                           multiline 
-                           variant="outlined" 
-                           value={data.comment} 
-                           onChange={handleComment}/>
-            </div>
-            <DeleteReviewButton id={id} review={data} reviewList={reviewList} />
+            <DeleteReviewButton id={id} review={data} reviewList={reviewList} style="icon-card-button"/>
         </div>
     )
 };
