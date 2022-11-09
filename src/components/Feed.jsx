@@ -21,21 +21,12 @@ const reorderReviews = (reviews) => {
     return reviews.sort((a, b) => b.date - a.date);
 }
 
-const Feed = ({ user, data }) => {
-    if(!user){
-        return <h1>Please Login first</h1>;
-    }
-
-    if (!data || (user && !data[user.id])) {
-        return <h1>Data is loading...</h1>;
-    }
-
+const Feed = ({ subscriptionIDs, user, data }) => {
     // get list of subscriptions
-    const subscriptions = getReviewsFromSubscriptions(data[user.id].subscriptions, data); //array of id strings OR ""
+    const subscriptions = getReviewsFromSubscriptions(subscriptionIDs, data); //array of id strings OR ""
     // then display reviews in that order
     const reviewsToDisplay = reorderReviews(subscriptions)
     
-
     //return the subscriptions
     return <div>
         <div className="card-grid" style={{ marginBottom: "2rem", marginTop: "2rem" }}>

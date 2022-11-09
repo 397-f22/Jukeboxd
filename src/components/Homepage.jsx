@@ -3,9 +3,13 @@ import { useState } from 'react';
 import Feed from './Feed.jsx'
 
 const Homepage = ({data, user}) => {
+    if (!data || (user && !data[user.id])) {
+        return <h1>Data is loading...</h1>;
+    }
+
     return( 
         <div className="container">
-            homepage
+           <Feed data={data} user={user} subscriptionIDs={Object.keys(data)}/>
         </div>  
     );
 }

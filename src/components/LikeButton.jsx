@@ -25,7 +25,8 @@ const LikeButton = ({user, pageID, review, data}) => {
     };
   
     const unlikeReview = () => {
-      const new_likes_list = data[pageID].reviews[findTimestamp()].likes.filter((element) => {element !== user.id})
+      const new_likes_list = data[pageID].reviews[reviewIndex].likes.filter((element) => {element !== user.id});
+
       update(
         {"likes": new_likes_list.length > 0 ? new_likes_list : ""}
       );  
