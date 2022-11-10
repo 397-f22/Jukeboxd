@@ -26,7 +26,7 @@ const CardFeed = ({ review, user, data, index }) => {
                     {review.comment && <div className="friend-comment">{review.comment}</div>}
                 </div>
             </div>
-            {(data && user) ? <LikeButton pageID={id} user={user} data={data} review={review} style={{alignSelf: "flex-end"}}/> : <div/>}
+            {data ? <LikeButton pageID={id} user={user} data={data} review={review} style={{alignSelf: "flex-end"}}/> : <div/>}
         </div>
     )
 };

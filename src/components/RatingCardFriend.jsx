@@ -18,7 +18,7 @@ const RatingCardFriend = ({ id, songData, user, index, data }) => {
                     {songData.comment && <div className="friend-comment">{songData.comment}</div>}
                 </div>
             </div>
-            {(data && user) ? <LikeButton pageID={id} user={user} data={data} review={songData} style="icon-card-button"/> : <div/>}
+            {(data && user) ? <LikeButton pageID={id} user={user} data={data} review={songData}/> : <div/>}
         </div>
     )
 };

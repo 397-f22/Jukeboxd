@@ -13,6 +13,10 @@ const LikeButton = ({user, pageID, review, data}) => {
     const [update, result] = useDbUpdate(`/${pageID}/reviews/${reviewIndex}`);
 
     const likeReview = () => {
+      if (!user) {
+        return;
+      }
+
       if (!likes) {
         update(
           {"likes": [user.id]}
@@ -26,6 +30,10 @@ const LikeButton = ({user, pageID, review, data}) => {
     };
   
     const unlikeReview = () => {
+      if (!user) {
+        return;
+      }
+
       const new_likes_list = likes.filter((element) => element !== user.id);
 
       update(
