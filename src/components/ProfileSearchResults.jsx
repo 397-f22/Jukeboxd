@@ -1,15 +1,16 @@
 import { Button } from "@mui/material";
+import { useState } from "react";
 
-const getUser = async (userId, spotify) => {
-    return await spotify.getUser(userId).then((user) => {
+const getUser = (userId, spotify) => {
+    const [url, setUrl] = useState("");
+    spotify.getUser(userId).then((user) => {
+        setUrl(user.images[0].url);
+        console.log(user)
         console.log(user.images[0].url)
-        return user.images[0].url
     }).catch((err) => {
-        //usually because token expires
-        if (err.status == 401) {
-            logout();
-        }
+
     })
+    return url;
 }
 
 const ProfileSearchResults = ({results, spotify}) => {
@@ -24,9 +25,9 @@ const ProfileSearchResults = ({results, spotify}) => {
     return <div className='profile-search-results'>
         {results.map((profile, i) => 
             <div className='profile' key={i}>
+                <img className="profile-image" src={getUser(profile.userId, spotify)}></img>
                 <span className="profile-name">{profile.displayName}</span>
                 <Button variant="outlined" color="success" onClick={()=>goToProfile(profile)}>Go To Profile</Button>
-                <img source={getUser(profile.userId, spotify)}></img>
             </div>
         )}
     </div>;
