@@ -1,6 +1,9 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
 //different by machine
+//const redirectUri = 'https://jukeboxd-9640e.firebaseapp.com/'
+
+//local address
 const redirectUri = 'http://localhost:5173/'
 
 // so here is the problem: because we are in development mode,

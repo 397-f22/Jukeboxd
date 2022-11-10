@@ -80,7 +80,7 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
         if (!user && spotifyAuth) {
             spotify.setAccessToken(spotifyToken)
             spotify.getMe().then((user) => {
-                //console.log("DIS YOU: ", user)
+                console.log("DIS YOU: ", user)
                 setUser(user);
 
             }).catch((err) => {
@@ -133,7 +133,7 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
             </div>
 
             <Modal open={open} close={closeModal} title="Results">
-                <ProfileSearchResults results={searchResults}/>
+                <ProfileSearchResults spotify = {spotify} results={searchResults}/>
             </Modal>
         </div>
 

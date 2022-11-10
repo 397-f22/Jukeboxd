@@ -29,6 +29,7 @@ const App = () => {
   const [recentSongs, setRecentSongs] = useState([]);
   const [data, error] = useDbData(`/`)
 
+
   return (
     <div className="App">
       <Header user={user} setUser={setUser} recentSongs={recentSongs} setRecentSongs={setRecentSongs} data={data}/>

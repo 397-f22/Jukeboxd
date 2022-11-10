@@ -1,10 +1,10 @@
 import { Button } from "@mui/material";
 
-const ProfileSearchResults = ({results}) => {
+const ProfileSearchResults = ({results, spotify}) => {
+    console.log(spotify.getUser('s_tanay'));
     if (!results) {
         return <div>Data is loading...</div>;
     }
-
     const goToProfile = (profile) => {
         window.location.href = `/profile/${profile.userId}`;
     }
