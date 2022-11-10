@@ -30,6 +30,7 @@
   align-items: center;
   margin-left: 20px;
   cursor: pointer;
+  flex: 1 1 0%;
 }
 
 .searchbox-container {
@@ -163,6 +164,35 @@ button {
   align-items: center;
   justify-content: flex-end;
   width: 100%;
+}
+
+.header-display-name{
+  margin-right: 10px;
+  font-size: 22px;
+}
+
+@media only screen and (max-width: 500px) {
+  .logo {
+    flex: 0.5 1 0%;
+  }
+
+  .logo .title{
+    display: none;
+  }
+
+  .authBtn {
+    display: unset;
+    margin-right: 0;
+  }
+
+  .header-display-name{
+    margin-right: 0;
+    font-size: 15px;
+  }
+
+  #logoutButton{
+    font-size: 10px;
+  }
 }
 
 .friend-profile-header {

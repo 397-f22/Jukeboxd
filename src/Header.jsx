@@ -101,7 +101,7 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
     })
 
     return <div className="App-header">
-        <div className='logo' onClick={backToHomepage} style={{flex: 1}}>
+        <div className='logo' onClick={backToHomepage}>
             <img src="https://i.imgur.com/yi37i4n.png"
                 style={{ width: "50px", marginRight: "10px", cursor: "pointer" }}
                 onClick={backToHomepage} />
@@ -141,7 +141,7 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
             {/* <Searchbox/> */}
             {spotifyAuth ?
                 <div className="authBtn">
-                    <div style={{ marginRight: "10px", fontSize: "22px" }}>{"Hi, " + user.display_name}</div>
+                    <div className="header-display-name">{"Hi, " + user.display_name}</div>
                     <div>
                         <Fab variant="extended" color="success" onClick={logout} id='logoutButton'>
                             <LogoutIcon sx={{ mr: 1 }} />
