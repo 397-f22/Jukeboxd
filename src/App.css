@@ -197,3 +197,11 @@ button {
 #searchbox-friend{
   color: lightgreen;
 }
+
+.profile{
+  margin-top: 10px;
+}
+
+.profile-name{
+  margin-right: 10px;
+}

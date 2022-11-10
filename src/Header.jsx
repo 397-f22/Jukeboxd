@@ -3,11 +3,9 @@ import SearchSongsPopup from './components/SearchSongsPopup.jsx'
 import { loginUrl, getTokenFromUrl } from './utilities/SpotifyLogin.jsx'
 import SpotifyWebApi from "spotify-web-api-js";
 import { useState, useEffect } from "react";
-import { WindowRounded } from '@mui/icons-material';
 import { Fab, TextField } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useDbData, useDbUpdate } from './utilities/firebase.js';
 import Modal from './components/Modal';
 import { searchProfiles } from './utilities/searchProfiles.js'
 import ProfileSearchResults from './components/ProfileSearchResults'
@@ -33,9 +31,11 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
     }
 
     const search = () => {
-        const profiles = searchProfiles(data, searchTerm);
-        setSearchResults(profiles);
-        openModal();
+        if(searchTerm != ""){
+            const profiles = searchProfiles(data, searchTerm);
+            setSearchResults(profiles);
+            openModal();
+        }
     }
 
     const backToHomepage = () => {
@@ -132,7 +132,7 @@ const Header = ({ user, setUser, data, recentSongs, setRecentSongs }) => {
                 {/* <button className='search-button' onClick={search} style={{flex: 1}}>Search</button> */}
             </div>
 
-            <Modal open={open} close={closeModal}>
+            <Modal open={open} close={closeModal} title="Results">
                 <ProfileSearchResults results={searchResults}/>
             </Modal>
         </div>

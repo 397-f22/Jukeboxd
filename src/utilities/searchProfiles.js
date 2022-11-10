@@ -5,7 +5,10 @@ const getDisplayNames = (data) => {
 };
 
 const getIdFromDisplayName = (data, displayName) => {
-    return Object.keys(data).map(id => data[id]).filter(person => person.displayName === displayName)[0];
+    return Object.keys(data).map(id => {
+        data[id]["userId"] = id;
+        return data[id]
+    }).filter(person => person.displayName === displayName)[0];
 };
 
 export const searchProfiles = (data, searchTerm) => {
