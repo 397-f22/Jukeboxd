@@ -24,7 +24,7 @@ export const formatDateDifference = (currentDate, olderDate) => {
     }
 
     else if (diff < -1000) {
-        returnValue = formatter.format(Math.round(diff / 60000), 'second');
+        returnValue = formatter.format(Math.round(diff / 1000), 'second');
     }
 
     return returnValue;
