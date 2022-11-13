@@ -7,6 +7,7 @@ const Homepage = ({data, user}) => {
         return <h1>Data is loading...</h1>;
     }
 
+    
     return( 
         <div className="container">
             <h2 style={{marginTop: "2rem"}}>Recent reviews</h2>
