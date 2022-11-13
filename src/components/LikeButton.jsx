@@ -48,7 +48,7 @@ const LikeButton = ({user, pageID, review, data}) => {
           </IconButton> : 
           <IconButton onClick={likeReview} color={"error"} style={{width: "fit-content", alignSelf: "center"}}>
             <FavoriteBorderIcon />
-          </IconButton>}
+          </IconButton>} 
       {likes.length ? <div style={{fontSize: "14px"}}>
           {`Liked by ${data[likes[likes.length-1]].displayName} ${likes.length > 1 ? (likes.length == 2 ? `and 1 other` : `and ${likes.length-1} others`) : ``}`}
         </div> : <div/>}
